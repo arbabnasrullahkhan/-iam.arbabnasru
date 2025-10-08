@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    
+    <!-- SEO & OG Tags -->
+    <title>Arbab Nasrullah | Developer, Designer, Founder</title>
+    <meta name="description" content="Arbab Nasrullah's portfolio showcasing web development projects, design skills, and trading insights. Helping you build your digital future.">
+    <meta name="keywords" content="Arbab Nasrullah, Web Developer, Designer, ANK TRADER, Portfolio, Pakistan, Firebase, Tailwind CSS">
+    <meta property="og:title" content="Arbab Nasrullah | Developer, Designer, Founder">
+    <meta property="og:description" content="Designing Ideas. Developing Futures. Explore my work.">
+    <meta property="og:image" content="assets/arbab.jpg">
+    <meta property="og:url" content="https://arbabnasru.infy.uk">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts (Using Inter for a modern, iOS-like feel) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Animation & Typing Effect Libraries -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+    <style>
+        /* CSS Variables for Theming (Light/Dark Mode) */
+        :root {
+            --bg-color: #030712; /* Nearly Black */
+            --text-color: #f3f4f6; /* Light Gray */
+            --text-secondary: #9ca3af; /* Medium Gray */
+            --card-bg: rgba(31, 41, 55, 0.5); /* Semi-transparent Gray-800 */
+            --border-color: rgba(55, 65, 81, 0.6); /* Gray-700 */
+            --brand-gradient: linear-gradient(90deg, #3B82F6, #8B5CF6);
+        }
+
+        html.light {
+            --bg-color: #f9fafb; /* Off-white */
+            --text-color: #111827; /* Dark Gray */
+            --text-secondary: #4b5563; /* Medium Gray */
+            --card-bg: rgba(255, 255, 255, 0.7); /* Semi-transparent White */
+            --border-color: #e5e7eb; /* Light Gray */
+        }
+        
+        /* Base Styling */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Glass Effect using CSS Variables */
+        .glass-effect {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            transition: background 0.3s ease, border 0.3s ease;
+        }
+
+        /* Gradient Text */
+        .brand-gradient-text {
+            background: var(--brand-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Typing cursor styling */
+        .typed-cursor {
+            color: #60a5fa; /* Blue-400 */
+            font-weight: 300;
+        }
+        
+        /* Smooth scroll for anchor links */
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="w-full">
+
+   <!-- HEADER / TOP NAVIGATION -->
+<header class="fixed top-0 left-0 w-full z-50 glass-effect">
+   
+    <div class="container mx-auto px-5 py-4 flex justify-between items-center">
+        <a href="home.html" class="text-2xl font-extrabold tracking-tight">AN.</a>
+        
+        <div class="flex items-center gap-4">
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-[var(--text-secondary)]">
+                <a href="shop.html" class="flex items-center gap-2 hover:text-[var(--text-color)] transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                    <span>Shop</span>
+                </a>
+                <a href="blog.html" class="flex items-center gap-2 hover:text-[var(--text-color)] transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 12h6M7 8h6"></path></svg>
+                    <span>Blogs</span>
+                </a>
+            <!-- Corrected Link to the App Store Page -->
+<a href="app-store.html" class="flex items-center gap-2 hover:text-[var(--text-color)] transition-colors">
+    <!-- This new SVG icon represents a grid of apps, perfect for an "App Store" -->
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
+    </svg>
+    <span>App Store</span>
+</a>
+                <a href="contact.html" class="flex items-center gap-2 hover:text-[var(--text-color)] transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    <span>Contact</span>
+                </a>
+            </nav>
+
+            <!-- Light/Dark Mode Toggle -->
+            <button id="theme-toggle" class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors">
+                <svg id="theme-icon-light" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                <svg id="theme-icon-dark" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+            </button>
+
+            <!-- Mobile Menu Button (Hamburger) -->
+            <button id="menu-btn" class="md:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.5 rounded-full hover:bg-white/10 transition-colors">
+                <span class="block w-5 h-0.5 bg-[var(--text-color)] rounded-full transition-transform duration-300"></span>
+                <span class="block w-5 h-0.5 bg-[var(--text-color)] rounded-full transition-transform duration-300"></span>
+                <span class="block w-5 h-0.5 bg-[var(--text-color)] rounded-full transition-transform duration-300"></span>
+            </button>
+        </div>
+    </div>
+    <!-- Mobile Menu Panel (with Apk Download link added) -->
+    <div id="mobile-menu" class="md:hidden hidden absolute top-full left-0 w-full p-4">
+        <div class="glass-effect rounded-xl p-6 flex flex-col items-center gap-6">
+            <a href="shop.html" class="font-semibold text-lg flex items-center gap-3">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                <span>Shop</span>
+            </a>
+            <a href="blog.html" class="font-semibold text-lg flex items-center gap-3">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 12h6M7 8h6"></path></svg>
+                <span>Blogs</span>
+            </a>
+         <!-- Corrected Link to the App Store for Mobile Menu -->
+<a href="app-store.html" class="font-semibold text-lg flex items-center gap-3">
+    <!-- This is the new, more appropriate "app grid" icon -->
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
+    </svg>
+    <!-- The text is now correct -->
+    <span>App Store</span>
+</a>
+            <a href="contact.html" class="font-semibold text-lg flex items-center gap-3">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                <span>Contact</span>
+            </a>
+            <div class="w-full border-t border-[var(--border-color)] my-2"></div>
+            <a href="assets/CV.pdf" download class="bg-blue-600 text-white font-bold py-3 px-8 rounded-full w-full text-center">Download CV</a>
+        </div>
+    </div>
+</header>
+
+    <main class="container mx-auto px-5 pt-28 md:pt-32">
+        
+       <!-- 1. HERO SECTION (with Cover Banner and Responsive Fix) -->
+<section id="hero" class="min-h-[90vh] flex flex-col items-center justify-center text-center pt-12 md:pt-0">
+    
+    <!-- Cover Banner with Autoplaying Video -->
+    <div class="w-full max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl shadow-blue-500/10 aspect-[3/1] md:aspect-[4/1] mb-[-4rem] md:mb-[-6rem] relative z-10 border-4 border-blue-500/20" data-aos="fade-down">
+        <!-- IMPORTANT: Place your video file at assets/myvideo.mp4 -->
+        <video autoplay loop muted playsinline class="w-full h-full object-cover">
+            <source src="assets/myvideo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div class="flex flex-col items-center gap-6 relative z-20" data-aos="fade-up" data-aos-delay="200">
+        <img src="assets/me.jpg" alt="Arrab Nasrullah" class="w-36 h-36 md:w-48 md:h-48 rounded-full object-cover border-4 border-[var(--bg-color)] shadow-2xl shadow-blue-500/10">
+        
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tighter">
+            Arbab Nasrullah
+        </h1>
+
+        <h2 class="text-xl sm:text-2xl font-semibold h-10">
+            <span id="typing-slogan" class="brand-gradient-text"></span>
+        </h2>
+
+        <p class="mt-2 text-base md:text-lg max-w-2xl text-[var(--text-secondary)]">
+            I am a passionate developer and designer building high-impact digital solutions. As the founder of <strong>Who Cares ANK</strong> & <strong>UNREAL TRADER</strong>, I merge technology with financial insights to empower the next generation.
+        </p>
+        
+        <a href="assets/CV.pdf" download class="hidden md:inline-block mt-6 bg-blue-600 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-700 transition-transform hover:scale-105">
+            Get My CV
+        </a>
+    </div>
+</section>
+
+<!-- ABOUT ME (Concise & Fully Responsive Version) -->
+<section id="about" class="py-20">
+    <div class="max-w-3xl mx-auto px-5 text-center" data-aos="fade-up">
+        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tighter">
+            A Little <span class="brand-gradient-text">About Me</span>
+        </h2>
+        
+        <div class="mt-8 text-center" data-aos="fade-up" data-aos-delay="200">
+            <p class="text-lg text-[var(--text-secondary)] leading-relaxed">
+                Hey, I’m <strong>Arbab Nasrullah</strong>, a developer, designer, and trader from <strong>Peshawar</strong>. My journey is driven by a mission to build things that matter from crafting clean code to designing compelling brand identities.
+                <br><br>
+                As the founder of <strong>Who Cares ANK </strong> & <strong>UNREAL TRADER</strong>, I merge technology with financial insights to empower others. I am a proud <strong>Pathan</strong> who believes in hustle, growth, and community.
+            </p>
+            
+            <!-- Call to Action Button -->
+            <a href="about-detail.html" class="mt-8 inline-block bg-blue-600 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-700 transition-transform hover:scale-105">
+                Read My Full Story →
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- CRITICAL FIX: Make sure your <body> tag looks like this -->
+<!-- <body class="w-full overflow-x-hidden"> -->
+
+            <!-- 2. ABOUT ME (Skillset Part) -->
+<h3 class="text-2xl font-semibold mb-6 brand-gradient-text" data-aos="fade-left">My Skillset</h3>
+<div class="space-y-6" data-aos="fade-left" data-aos-delay="100">
+
+    <!-- Skill Item 1: Web Development -->
+    <div>
+        <div class="flex justify-between items-center mb-1">
+            <div class="flex items-center gap-3">
+                <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                <p class="font-semibold">Web Development (HTML, CSS, JS)</p>
+            </div>
+            <span class="text-sm font-medium text-[var(--text-secondary)]">95%</span>
+        </div>
+        <div class="w-full bg-[var(--border-color)] rounded-full h-2.5">
+            <div class="h-2.5 rounded-full" style="width: 95%; background-image: var(--brand-gradient);"></div>
+        </div>
+    </div>
+
+    <!-- Skill Item 2: Trading -->
+    <div>
+        <div class="flex justify-between items-center mb-1">
+            <div class="flex items-center gap-3">
+                <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                <p class="font-semibold">Trading & Market Analysis</p>
+            </div>
+            <span class="text-sm font-medium text-[var(--text-secondary)]">87%</span>
+        </div>
+        <div class="w-full bg-[var(--border-color)] rounded-full h-2.5">
+            <div class="h-2.5 rounded-full" style="width: 87%; background-image: var(--brand-gradient);"></div>
+        </div>
+    </div>
+
+    <!-- Skill Item 3: Firebase -->
+    <div>
+        <div class="flex justify-between items-center mb-1">
+            <div class="flex items-center gap-3">
+                <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
+                <p class="font-semibold">Firebase (Backend & Database)</p>
+            </div>
+            <span class="text-sm font-medium text-[var(--text-secondary)]">75%</span>
+        </div>
+        <div class="w-full bg-[var(--border-color)] rounded-full h-2.5">
+            <div class="h-2.5 rounded-full" style="width: 75%; background-image: var(--brand-gradient);"></div>
+        </div>
+    </div>
+
+    <!-- Skill Item 4: Digital Design -->
+    <div>
+        <div class="flex justify-between items-center mb-1">
+            <div class="flex items-center gap-3">
+                 <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
+                <p class="font-semibold">Digital Design (Canva, Photoshop)</p>
+            </div>
+            <span class="text-sm font-medium text-[var(--text-secondary)]">90%</span>
+        </div>
+        <div class="w-full bg-[var(--border-color)] rounded-full h-2.5">
+            <div class="h-2.5 rounded-full" style="width: 90%; background-image: var(--brand-gradient);"></div>
+        </div>
+    </div>
+</div>
+
+<!-- SOCIAL MEDIA CARDS SECTION -->
+<section id="socials" class="py-20">
+    <div class="max-w-5xl mx-auto text-center px-5" data-aos="fade-up">
+        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tighter">
+            Follow My <span class="brand-gradient-text">Journey</span>
+        </h2>
+        <p class="mt-4 text-lg text-[var(--text-secondary)]">Connect with me on your favorite platform.</p>
+    </div>
+
+    <!-- Horizontal Scrolling Container -->
+    <div x-data="horizontalScroll()" x-init="init()" class="relative mt-12" data-aos="fade-up">
+        <!-- Add overflow-hidden to the parent to hide scrollbars completely -->
+        <div class="overflow-hidden">
+            <div x-ref="scroller" class="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory no-scrollbar pl-5 pr-5">
+                <!-- Social Card 1: WhatsApp Channel -->
+                <div class="snap-center shrink-0 w-[calc(100%-2.5rem)] sm:w-[45%] md:w-1/3 lg:w-1/4">
+                    <div class="glass-effect rounded-2xl overflow-hidden shadow-lg h-full flex flex-col">
+                        <img src="assets/social/whatsapp.jpg" class="w-full h-64 object-cover" alt="WhatsApp Channel">
+                        <div class="p-5 text-center flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold">WhatsApp Channel</h3>
+                            <a href="https://whatsapp.com/channel/0029Vae6ulL4Y9lpT0nXHv1N" target="_blank" class="mt-auto inline-flex items-center justify-center w-full bg-green-500 text-white font-bold py-3 px-6 rounded-full hover:bg-green-600 transition-transform hover:scale-105 gap-2">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 4.315 1.919 6.066l-1.479 5.414 5.532-1.441z"/></svg>
+                                <span>Join Channel</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Card 2: Instagram -->
+                <div class="snap-center shrink-0 w-[calc(100%-2.5rem)] sm:w-[45%] md:w-1/3 lg:w-1/4">
+                    <div class="glass-effect rounded-2xl overflow-hidden shadow-lg h-full flex flex-col">
+                        <img src="assets/social/instagram.jpg" class="w-full h-64 object-cover" alt="Instagram Profile">
+                        <div class="p-5 text-center flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold">Instagram</h3>
+                            <a href="https://instagram.com/iam.arbabnasru" target="_blank" class="mt-auto inline-flex items-center justify-center w-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 text-white font-bold py-3 px-6 rounded-full hover:opacity-90 transition-opacity hover:scale-105">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.703.01 5.556 0 5.829 0 8s.01 2.444.048 3.297c.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.556 15.99 5.829 16 8 16s2.444-.01 3.297-.048c.852-.04 1.433-.174 1.942-.372.526-.205.972-.478 1.417-.923.445-.444.718-.891.923-1.417.198-.51.333-1.09.372-1.942C15.99 10.444 16 10.171 16 8s-.01-2.444-.048-3.297c-.04-.852-.174-1.433-.372-1.942a3.916 3.916 0 0 0-.923-1.417A3.916 3.916 0 0 0 13.24.42c-.51-.198-1.09-.333-1.942-.372C10.444.01 10.171 0 8 0zm0 1.442c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.282.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.231s.008-2.389.046-3.232c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.843-.038 1.096-.047 3.232-.047zM8 4.908a3.092 3.092 0 1 0 0 6.184 3.092 3.092 0 0 0 0-6.184zm0 5.153a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM12.355 4.169a.972.972 0 1 0 0-1.943.972.972 0 0 0 0 1.943z"/></svg>
+                                <span>Follow</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Card 3: TikTok -->
+                <div class="snap-center shrink-0 w-[calc(100%-2.5rem)] sm:w-[45%] md:w-1/3 lg:w-1/4">
+                    <div class="glass-effect rounded-2xl overflow-hidden shadow-lg h-full flex flex-col">
+                        <img src="assets/social/tiktok.jpg" class="w-full h-64 object-cover" alt="TikTok Profile">
+                        <div class="p-5 text-center flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold">TikTok</h3>
+                            <a href="https://tiktok.com/@iam.arbabnasru" target="_blank" class="mt-auto inline-flex items-center justify-center w-full bg-black text-white font-bold py-3 px-6 rounded-full hover:bg-gray-800 transition-transform hover:scale-105 gap-2">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 16 16"><path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z"/></svg>
+                                <span>Watch</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Card 4: LinkedIn -->
+                <div class="snap-center shrink-0 w-[calc(100%-2.5rem)] sm:w-[45%] md:w-1/3 lg:w-1/4">
+                    <div class="glass-effect rounded-2xl overflow-hidden shadow-lg h-full flex flex-col">
+                        <img src="assets/social/linkedin.jpg" class="w-full h-64 object-cover" alt="LinkedIn Profile">
+                        <div class="p-5 text-center flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold">LinkedIn</h3>
+                            <a href="https://www.linkedin.com/in/arbab-nasrullah-06804a358?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="mt-auto inline-flex items-center justify-center w-full bg-blue-700 text-white font-bold py-3 px-6 rounded-full hover:bg-blue-800 transition-transform hover:scale-105 gap-2">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                <span>Connect</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Social Card 5: Facebook -->
+                <div class="snap-center shrink-0 w-[calc(100%-2.5rem)] sm:w-[45%] md:w-1/3 lg:w-1/4">
+                    <div class="glass-effect rounded-2xl overflow-hidden shadow-lg h-full flex flex-col">
+                        <img src="assets/social/facebook.jpg" class="w-full h-64 object-cover" alt="Facebook Profile">
+                        <div class="p-5 text-center flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold">Facebook</h3>
+                            <a href="https://facebook.com/iam.arbabnasru" target="_blank" class="mt-auto inline-flex items-center justify-center w-full bg-blue-800 text-white font-bold py-3 px-6 rounded-full hover:bg-blue-900 transition-transform hover:scale-105 gap-2">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 16 16"><path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/></svg>
+                                <span>Add Friend</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Card 6: X (Twitter) -->
+                <div class="snap-center shrink-0 w-[calc(100%-2.5rem)] sm:w-[45%] md:w-1/3 lg:w-1/4">
+                    <div class="glass-effect rounded-2xl overflow-hidden shadow-lg h-full flex flex-col">
+                        <img src="assets/social/x.jpg" class="w-full h-64 object-cover" alt="X (Twitter) Profile">
+                        <div class="p-5 text-center flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold">X (Twitter)</h3>
+                            <a href="https://x.com/iamarbabnasru" target="_blank" class="mt-auto inline-flex items-center justify-center w-full bg-gray-800 text-white font-bold py-3 px-6 rounded-full hover:bg-gray-900 transition-transform hover:scale-105 gap-2">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 16 16"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75zM11.46 13.812h1.57L4.74 2.156H3.065l8.395 11.656z"/></svg>
+                                <span>Follow</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Card 7: Telegram -->
+                <div class="snap-center shrink-0 w-[calc(100%-2.5rem)] sm:w-[45%] md:w-1/3 lg:w-1/4">
+                    <div class="glass-effect rounded-2xl overflow-hidden shadow-lg h-full flex flex-col">
+                        <img src="assets/social/telegram.jpg" class="w-full h-64 object-cover" alt="Telegram Profile">
+                        <div class="p-5 text-center flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold">Telegram</h3>
+                            <a href="https://t.me/teachflowarbab" target="_blank" class="mt-auto inline-flex items-center justify-center w-full bg-sky-500 text-white font-bold py-3 px-6 rounded-full hover:bg-sky-600 transition-transform hover:scale-105 gap-2">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm3.2-13.84-8.4 3.23a.5.5 0 0 0 0 .94l2.12.82 5.46-3.42a.5.5 0 0 1 .63.63l-4.22 5.1 2.3.89a.5.5 0 0 0 .7-.3l2.4-7.38a.5.5 0 0 0-.69-.6z"/></svg>
+                                <span>Join Channel</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Card 8: Snapchat -->
+                <div class="snap-center shrink-0 w-[calc(100%-2.5rem)] sm:w-[45%] md:w-1/3 lg:w-1/4">
+                    <div class="glass-effect rounded-2xl overflow-hidden shadow-lg h-full flex flex-col">
+                        <img src="assets/social/snap.jpg" class="w-full h-64 object-cover" alt="Snapchat Profile">
+                        <div class="p-5 text-center flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold">Snapchat</h3>
+                            <a href="https://www.snapchat.com/add/iam.arbabnasru" target="_blank" class="mt-auto inline-flex items-center justify-center w-full bg-yellow-400 text-black font-bold py-3 px-6 rounded-full hover:bg-yellow-500 transition-transform hover:scale-105 gap-2">
+                           <img src="assets/snap.jpg" alt="Snapchat Icon" class="w-9 h-8">
+                                <span>Add Friend</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Hide scrollbar utility class (for browsers that don't support the CSS property) -->
+<style>
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+</style>
+
+<!-- Alpine.js for the horizontal scroll logic -->
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+<script>
+    function horizontalScroll() {
+        return {
+            scroller: null,
+            interval: null,
+            scrollAmount: 0,
+            init() {
+                this.$nextTick(() => {
+                    this.scroller = this.$refs.scroller;
+                    const cards = this.scroller.querySelectorAll('.snap-center');
+                    if (cards.length > 1) {
+                        this.scrollAmount = cards[0].offsetWidth + parseInt(window.getComputedStyle(cards[0]).marginRight) * 2;
+                        this.startScrolling();
+                        this.scroller.addEventListener('mouseenter', () => clearInterval(this.interval));
+                        this.scroller.addEventListener('mouseleave', () => this.startScrolling());
+                    }
+                });
+            },
+            startScrolling() {
+                this.interval = setInterval(() => {
+                    // If we're at the end (the dummy card), jump to start
+                    if (this.scroller.scrollLeft >= (this.scroller.scrollWidth - this.scroller.clientWidth - 1)) {
+                        this.scroller.scrollTo({ left: 0, behavior: 'smooth' });
+                    } else {
+                        this.scroller.scrollBy({ left: this.scrollAmount, behavior: 'smooth' });
+                    }
+                }, 4000); // 4 seconds
+            }
+        }
+    }
+</script>
+                 
+        <!-- 3. FEATURED PROJECTS -->
+        <section id="projects" class="py-20">
+            <!-- Your Featured Projects code goes here -->
+             <h2 class="text-3xl md:text-4xl font-bold text-center mb-12" data-aos="fade-up">Featured Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+       
+       <!-- Project Card 1: Dell Laptop Sales Page -->
+       <div class="glass-effect rounded-xl overflow-hidden group" data-aos="fade-up">
+           <!-- Use a great screenshot from your new sales page -->
+               <img src="assets/laptop.jpg" alt="My first Project "" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                   <div class="p-6">
+                           <h3 class="text-xl font-bold">My First Project Dell Laptop Sale Page</h3>
+                                   <p class="text-sm text-[var(--text-secondary)] mt-2">
+                                               A premium, single-page website designed to sell a personal laptop with maximum trust and detail.
+                                                       </p>
+                                        <a href="https://leptopschmes.free.nf" target="_blank" class="inline-block mt-6 bg-blue-600 text-white font-semibold py-2 px-5 rounded-full hover:bg-blue-700 transition-colors text-sm">
+                                                                                   View Live Page
+                                            </a>
+                       </div> 
+                                               </div>
+                <!-- Project Card 2 -->
+                <div class="glass-effect rounded-xl overflow-hidden group" data-aos="fade-up" data-aos-delay="200">
+                    <img src="assets/ut.png" alt="UNREAL TRADER Branding" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold">Unreal TRADER</h3>
+                        <p class="text-sm text-[var(--text-secondary)] mt-2">Official branding and web presence for my trading venture, focusing on credibility and user trust.</p>
+                        <a href="project.html" class="inline-block mt-6 bg-blue-600 text-white font-semibold py-2 px-5 rounded-full hover:bg-blue-700 transition-colors text-sm">View Details</a>
+                    </div>
+                </div>
+            </div>
+             <div class="text-center mt-12" data-aos="fade-up">
+                <a href="project.html" class="bg-gray-800 text-white font-bold py-3 px-8 rounded-full hover:bg-gray-700 transition-transform hover:scale-105">View All My Projects →</a>
+            </div>
+        </section>
+
+        <!-- ALL OTHER SECTIONS FROM PREVIOUS STEPS (TESTIMONIALS, FAQ, etc.) -->
+        <section id="services" class="py-20">
+             <h2 class="text-3xl md:text-4xl font-bold text-center mb-12" data-aos="fade-up">What I Offer</h2>
+             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <!-- Service 1 -->
+                <div class="p-8 glass-effect rounded-xl" data-aos="zoom-in">
+                    <svg class="w-12 h-12 mx-auto text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                    <h3 class="text-xl font-bold mt-4">Web Development</h3>
+                    <p class="text-[var(--text-secondary)] mt-2">Responsive, fast, and modern websites built from scratch.</p>
+                </div>
+                <!-- Service 2 -->
+                <div class="p-8 glass-effect rounded-xl" data-aos="zoom-in" data-aos-delay="200">
+                    <svg class="w-12 h-12 mx-auto text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
+                    <h3 class="text-xl font-bold mt-4">Branding & Design</h3>
+                    <p class="text-[var(--text-secondary)] mt-2">Logos, social media templates, and full brand kits.</p>
+                </div>
+                <!-- Service 3 -->
+                <div class="p-8 glass-effect rounded-xl" data-aos="zoom-in" data-aos-delay="400">
+                    <svg class="w-12 h-12 mx-auto text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                    <h3 class="text-xl font-bold mt-4">Trading Strategy</h3>
+                    <p class="text-[var(--text-secondary)] mt-2">Support and insights based on my experience with UNREAL TRADER.</p>
+                </div>
+             </div>
+        </section>
+
+        <!-- 8. FAQ SECTION -->
+        <section id="faq" class="py-20">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12" data-aos="fade-up">Frequently Asked Questions</h2>
+            <div class="max-w-3xl mx-auto space-y-4" data-aos="fade-up">
+                <!-- FAQ Item 1 -->
+                <div class="glass-effect rounded-lg">
+                    <button class="faq-question w-full flex justify-between items-center text-left p-5 font-semibold text-lg">
+                        <span>How can I hire you for a project?</span>
+                        <svg class="faq-arrow w-5 h-5 shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <p class="px-5 pb-5 text-[var(--text-secondary)]">The best way is to fill out the form on the <a href="contact.html" class="text-blue-400 underline">Contact page</a> or send me a direct message on WhatsApp. We can discuss your project requirements and see if we're a good fit.</p>
+                    </div>
+                </div>
+                <!-- FAQ Item 2 -->
+                <div class="glass-effect rounded-lg">
+                    <button class="faq-question w-full flex justify-between items-center text-left p-5 font-semibold text-lg">
+                        <span>What is your typical project timeline?</span>
+                         <svg class="faq-arrow w-5 h-5 shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <p class="px-5 pb-5 text-[var(--text-secondary)]">A simple landing page can take 1-2 weeks. More complex websites with a backend can take 4-6 weeks. I always provide a detailed timeline in my project proposals.</p>
+                    </div>
+                </div>
+            </div>
+            <div
+
+            class="text-center mt-12" data-aos="fade-up"><a href="faq.html"
+  class="bg-gray-800 text-white  font-bold py-3 px-8 rounded-full hover:bg-gray-700 transition-transform hover:scale-105">View All FAQs →</a>
+             </div>
+        </section>
+
+    </main>
+    
+    <!-- FOOTER & FINAL CTA -->
+    <footer class="border-t border-[var(--border-color)] mt-20 pb-28 md:pb-0">
+        <div class="container mx-auto px-5 py-12 text-center">
+            <h2 class="text-3xl font-bold">Ready to build something amazing?</h2>
+            <p class="text-[var(--text-secondary)] mt-2">Let's connect and bring your ideas to life.</p>
+            <a href="contact.html" class="mt-8 inline-block bg-blue-600 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-700 transition-transform hover:scale-105">
+                Contact Me Now
+            </a>
+            <div class="mt-12 text-sm text-[var(--text-secondary)]">
+                <p>&copy; 2024 Arbab Nasrullah. All Rights Reserved.</p>
+                 <div class="mt-4 flex items-center justify-center space-x-4">
+                    <a href="assets/arbab-nasrullah.vcf" download class="hover:text-[var(--text-color)] transition-colors">Download vCard</a>
+                    <span>|</span>
+                    <div class="flex items-center space-x-1">
+                        <span>Visitors: <span id="visitor-count">...</span></span>
+            <div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a href="https://wa.me/923009108670" target="_blank" class="fixed bottom-24 right-5 md:bottom-8 md:right-8 z-50 bg-green-500 w-14 h-14 rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform">
+        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 4.315 1.919 6.066l-1.479 5.414 5.532-1.441z"/></svg>
+    </a>
+
+    <!-- MOBILE BOTTOM NAVIGATION (iOS STYLE) -->
+        <nav class="md:hidden fixed bottom-0 left-0 w-full p-3 z-50">
+                <div class="glass-effect rounded-2xl w-full flex justify-around items-center py-3">
+                            <a href="home.html" class="flex flex-col items-center gap-1 text-blue-500">
+                                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+                                                            <span class="text-xs font-bold">Home</span>
+                                                                        </a>
+                                                                                    <a href="project.html" class="flex flex-col items-center gap-1 text-[var(--text-secondary)] hover:text-[var(--text-color)]">
+                                                                                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                                                                                                                    <span class="text-xs font-bold">Projects</span>
+                                                                                                                                </a>
+                                                                                                                                            <a href="contact.html" class="flex flex-col items-center gap-1 text-[var(--text-secondary)] hover:text-[var(--text-color)]">
+                                                                                                                                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                                                                                                                                                            <span class="text-xs font-bold">Contact</span>
+                                                                                                                                                                                        </a>
+                                                                                                                                                                                                </div>
+                                                                                                                                                                                                    </nav>
+
+    <!-- All Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Initialize AOS (Animate on Scroll)
+            AOS.init({ duration: 800, once: true, offset: 50 });
+
+            // 2. Light/Dark Mode Logic
+            const themeToggle = document.getElementById('theme-toggle');
+            const lightIcon = document.getElementById('theme-icon-light');
+            const darkIcon = document.getElementById('theme-icon-dark');
+
+            const applyTheme = (theme) => {
+                if (theme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.classList.remove('light');
+                    lightIcon.classList.add('hidden');
+                    darkIcon.classList.remove('hidden');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    document.documentElement.classList.add('light');
+                    darkIcon.classList.add('hidden');
+                    lightIcon.classList.remove('hidden');
+                }
+            };
+
+            const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            applyTheme(savedTheme);
+
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = localStorage.getItem('theme') || 'light';
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                localStorage.setItem('theme', newTheme);
+                applyTheme(newTheme);
+            });
+
+            // 3. Mobile Menu (Hamburger) Logic
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuSpans = menuBtn.querySelectorAll('span');
+
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                menuSpans[0].classList.toggle('rotate-45');
+                menuSpans[0].classList.toggle('translate-y-2');
+                menuSpans[1].classList.toggle('opacity-0');
+                menuSpans[2].classList.toggle('-rotate-45');
+                menuSpans[2].classList.toggle('-translate-y-2');
+            });
+
+            // 4. Typing Effect Logic
+            new Typed('#typing-slogan', {
+                strings: ['Designing Ideas.', 'Developing Futures.', 'Khud Ko Bano Profitable'],
+                typeSpeed: 50,
+                backSpeed: 30,
+                backDelay: 2000,
+                startDelay: 500,
+                loop: true,
+                smartBackspace: true,
+            });
+
+            // 5. FAQ Accordion Logic
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const answer = question.nextElementSibling;
+                    const arrow = question.querySelector('.faq-arrow');
+                    const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
+                    
+                    document.querySelectorAll('.faq-answer').forEach(ans => ans.style.maxHeight = '0px');
+                    document.querySelectorAll('.faq-arrow').forEach(arr => arr.style.transform = 'rotate(0deg)');
+
+                    if (!isOpen) {
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                        arrow.style.transform = 'rotate(180deg)';
+                    }
+                });
+            });
+
+            // 6. Visitor Counter Logic
+            function updateVisitorCount() {
+                const countElement = document.getElementById('visitor-count');
+                const apiKey = 'arbabnasru-homepage-counter';  // A unique key for your site
+                fetch(`https://api.countapi.xyz/hit/arbabnasrullah/${apiKey}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        countElement.textContent = data.value;
+                    }).catch(() => countElement.textContent = '27,275');
+            }
+            updateVisitorCount();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="google-site-verification" content="zk9YhnsE2ZOehEM0pWa2bNEf0trNDFJY6t2z6LfAQtk" />
+    <title>Welcome | Arbab Nasrullah</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts (Consistent with other pages) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables for Theming (Light/Dark Mode) */
+        :root {
+            --bg-color: #030712;
+            --text-color: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --brand-gradient: linear-gradient(90deg, #3B82F6, #8B5CF6);
+        }
+
+        html.light {
+            --bg-color: #f9fafb;
+            --text-color: #111827;
+            --text-secondary: #4b5563;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            overflow: hidden; /* Prevents scrollbars during animation */
+        }
+
+        /* Animation Keyframes */
+        @keyframes fadeInScaleUp {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fillProgress {
+            from { width: 0%; }
+            to { width: 100%; }
+        }
+
+        /* Applying Animations */
+        .content-container {
+            animation: fadeInScaleUp 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+        
+        .progress-bar-inner {
+            background: var(--brand-gradient);
+            animation: fillProgress 4s linear forwards;
+            animation-delay: 0.5s;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+    
+    <!-- ===================================================================== -->
+    <!--  FIX: Gaps and margins are now responsive (smaller on mobile)       -->
+    <!-- ===================================================================== -->
+    <div class="content-container text-center flex flex-col items-center gap-4 md:gap-6 p-5">
+        
+        <!-- Animated Logo -->
+        <div class="text-6xl md:text-8xl font-extrabold tracking-tight">
+            AN.
+        </div>
+
+        <!-- Animated Text -->
+        <p class="text-lg md:text-xl text-[var(--text-secondary)]">
+            Crafting digital experiences...
+        </p>
+
+        <!-- Progress Bar -->
+        <div class="w-48 h-1.5 bg-gray-700/50 rounded-full overflow-hidden mt-2 md:mt-4">
+            <div class="progress-bar-inner h-full rounded-full"></div>
+        </div>
+    </div>
+
+    <script>
+        // 1. Theme Detection (for a seamless experience)
+        // This checks system preference or saved theme from other pages and applies it instantly.
+        const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        if (savedTheme === 'light') {
+             document.documentElement.classList.add('light');
+        }
+
+        // 2. JavaScript Redirect
+        // Redirect after 4.5 seconds (giving animation time to complete)
+        setTimeout(() => {
+            window.location.href = 'home.html';
+        }, 4500);
+    </script>
+</body>
+</html>
