@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>App Details | AN. App Store</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display.swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>:root{--bg-color:#030712;--text-color:#f3f4f6;--text-secondary:#9ca3af;--card-bg:rgba(31,41,55,0.5);--border-color:rgba(55,65,81,0.6);--brand-gradient:linear-gradient(90deg,#3B82F6,#8B5CF6)}html.light{--bg-color:#f9fafb;--text-color:#111827;--text-secondary:#4b5563;--card-bg:rgba(255,255,255,0.7);--border-color:#e5e7eb}body{font-family:'Inter',sans-serif;background-color:var(--bg-color);color:var(--text-color);transition:background-color .3s ease,color .3s ease}.glass-effect{background:var(--card-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--border-color);transition:background .3s ease,border .3s ease}.brand-gradient-text{background:var(--brand-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.no-scrollbar::-webkit-scrollbar{display:none}.no-scrollbar{-ms-overflow-style:none;scrollbar-width:none}</style>
+</head>
+<body class="w-full">
+
+    <!-- HEADER with BACK BUTTON (FIXED & ROBUST) -->
+    <header class="sticky top-0 left-0 w-full z-50 glass-effect">
+        <div class="container mx-auto px-5 py-4 grid grid-cols-3 items-center">
+            <div class="justify-self-start">
+                <a href="app-store.html" class="glass-effect flex items-center gap-2 font-semibold text-sm py-2 px-4 rounded-full hover:border-blue-500 transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    <span>Back</span>
+                </a>
+            </div>
+            <div class="justify-self-center"><a href="home.html" class="text-2xl font-extrabold tracking-tight">AN.</a></div>
+            <div class="justify-self-end">
+                <button id="theme-toggle" class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors">
+                    <svg id="theme-icon-light" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <svg id="theme-icon-dark" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-5 pt-12 pb-20">
+        <div id="app-content">
+            <p id="loading-message" class="text-center pt-20">Loading app details...</p>
+        </div>
+        <div id="recommended-apps" class="mt-20"></div>
+        <div id="reviews-section" class="mt-20 max-w-4xl mx-auto"></div>
+    </main>
+    
+    <footer class="border-t border-[var(--border-color)]"><div class="container mx-auto px-5 py-8 text-center text-sm text-[var(--text-secondary)]"><p>© 2024 Arbab Nasrullah. All Rights Reserved.</p></div></footer>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        const firebaseConfig = { apiKey: "AIzaSyBO54U5WtwR3rfDDHFgDbPzwF-V27Ml5m4", authDomain: "portfolio-87299.firebaseapp.com", projectId: "portfolio-87299", storageBucket: "portfolio-87299.firebasestorage.app", messagingSenderId: "458111444495", appId: "1:458111444495:web:f290b11f480e6ad1fe657a", measurementId: "G-6EYBX1VE63" };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        document.addEventListener('DOMContentLoaded', () => {
+            AOS.init({ duration: 800, once: true, offset: 50 });
+            // Light/Dark Mode Logic (same as before)
+            const themeToggle=document.getElementById("theme-toggle"),lightIcon=document.getElementById("theme-icon-light"),darkIcon=document.getElementById("theme-icon-dark"),applyTheme=e=>{document.documentElement.className=e,"dark"===e?(lightIcon.classList.add("hidden"),darkIcon.classList.remove("hidden")):(lightIcon.classList.remove("hidden"),darkIcon.classList.add("hidden"))},savedTheme=localStorage.getItem("theme")||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");applyTheme(savedTheme),themeToggle.addEventListener("click",()=>{const e="light"===(localStorage.getItem("theme")||"light")?"dark":"light";localStorage.setItem("theme",e),applyTheme(e)});
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const appId = urlParams.get('id');
+            const appContent = document.getElementById('app-content');
+            
+            if (!appId) {
+                appContent.innerHTML = `<p class="text-center text-red-400 pt-20">App ID not found.</p>`;
+                return;
+            }
+
+            db.collection("apps").doc(appId).get().then(doc => {
+                if (!doc.exists) {
+                    appContent.innerHTML = `<p class="text-center text-red-400 pt-20">App not found.</p>`;
+                    return;
+                }
+                const app = doc.data();
+                document.title = `${app.name} | AN. App Store`;
+
+                let screenshotsHTML = '';
+                app.screenshots.forEach(ss => { screenshotsHTML += `<img src="assets/apps/${app.folderName}/${ss}" class="h-80 rounded-2xl snap-center" alt="App Screenshot">`; });
+                
+                let downloadButtonsHTML = '';
+                if (app.androidLink) {
+                    downloadButtonsHTML += `<a href="${app.androidLink}" download class="w-full bg-blue-600 text-white font-bold py-4 px-6 rounded-full hover:bg-blue-700 transition-transform hover:scale-105 flex items-center justify-center gap-3">Download for Android</a>`;
+                }
+                if (app.iosLink) {
+                    downloadButtonsHTML += `<a href="${app.iosLink}" target="_blank" class="w-full bg-gray-700 text-white font-bold py-4 px-6 rounded-full hover:bg-gray-600 transition-transform hover:scale-105 flex items-center justify-center gap-3">Get on the App Store</a>`;
+                }
+
+                const appHTML = `
+                    <div class="max-w-4xl mx-auto">
+                        <img src="assets/apps/${app.folderName}/${app.banner}" class="w-full h-48 md:h-64 object-cover rounded-2xl" data-aos="fade-down">
+                        <div class="flex items-center gap-6 -mt-12 px-4">
+                            <img src="assets/apps/${app.folderName}/${app.icon}" alt="${app.name} Icon" class="w-32 h-32 md:w-36 md:h-36 rounded-3xl shadow-lg shrink-0 border-4 border-[var(--bg-color)]" data-aos="zoom-in">
+                            <div class="pt-12">
+                                <h1 class="text-3xl md:text-4xl font-extrabold tracking-tighter">${app.name}</h1>
+                                <p class="mt-1 text-base font-semibold brand-gradient-text">${app.companyName}</p>
+                            </div>
+                        </div>
+                        <div class="mt-6 grid grid-cols-3 divide-x divide-[var(--border-color)] text-center">
+                            <div class="px-2"><p class="font-bold text-xl">${app.rating} ★</p><p class="text-xs text-[var(--text-secondary)]">Ratings</p></div>
+                            <div class="px-2"><p class="font-bold text-xl">${app.downloads}</p><p class="text-xs text-[var(--text-secondary)]">Downloads</p></div>
+                            <div class="px-2"><p class="font-bold text-xl">${app.users}</p><p class="text-xs text-[var(--text-secondary)]">Users</p></div>
+                        </div>
+                        <div class="mt-8 flex flex-col sm:flex-row gap-4">${downloadButtonsHTML}</div>
+                    </div>
+                    <div class="py-16" data-aos="fade-up"><div class="flex gap-4 overflow-x-auto pb-4 no-scrollbar snap-x snap-mandatory">${screenshotsHTML}</div></div>
+                    <div class="max-w-4xl mx-auto space-y-12">
+                        <div data-aos="fade-up"><h2 class="font-bold text-2xl mb-4">Description</h2><p class="text-[var(--text-secondary)] whitespace-pre-wrap">${app.description}</p></div>
+                        <div data-aos="fade-up"><h2 class="font-bold text-2xl mb-4">About This App</h2><div class="bg-[var(--card-bg)] rounded-xl p-6 grid grid-cols-2 gap-4 text-sm"><div class="font-semibold text-gray-400">Launch Date:</div><div>${new Date(app.launchDate).toLocaleDateString()}</div><div class="font-semibold text-gray-400">Support Email:</div><div><a href="mailto:${app.supportEmail}" class="text-blue-400">${app.supportEmail}</a></div><div class="font-semibold text-gray-400">Company:</div><div>${app.companyName}</div></div></div>
+                    </div>
+                `;
+                appContent.innerHTML = appHTML;
+
+                loadReviews(appId);
+                loadRecommendedApps(appId);
+            }).catch(error => console.error("Error fetching app details: ", error));
+
+            // Load Reviews (No changes to this function)
+            const reviewsSection = document.getElementById('reviews-section');
+            const loadReviews = (appId) => { /* ... Your existing, correct loadReviews function ... */ 
+                db.collection("apps").doc(appId).collection("reviews").orderBy("createdAt", "desc").get().then(snapshot => {
+                    let reviewsHTML = `<h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Ratings & Reviews</h2>`;
+                    if (snapshot.empty) { reviewsHTML += `<p class="text-center text-[var(--text-secondary)]">No reviews yet. Be the first!</p>`; }
+                    else {
+                         reviewsHTML += `<div class="space-y-6">`;
+                         snapshot.forEach(doc => {
+                             const review = doc.data();
+                             const replyHTML = review.reply ? `<div class="mt-4 pt-4 border-t border-[var(--border-color)]"><div class="flex items-center gap-2"><span class="font-bold text-sm">Arbab Nasrullah</span><svg class="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a.75.75 0 00-1.06-1.06L9 10.94l-1.72-1.72a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.06 0l4.25-4.25z" clip-rule="evenodd"></path></svg></div><p class="mt-1 text-sm text-[var(--text-secondary)]">${review.reply}</p></div>` : '';
+                             reviewsHTML += `<div class="glass-effect rounded-xl p-5" data-aos="fade-up"><div class="flex items-center gap-3"><svg class="w-10 h-10 text-[var(--text-secondary)]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0012 11z" clip-rule="evenodd"></path></svg><span class="font-semibold">${review.name}</span></div><p class="mt-3 text-[var(--text-secondary)]">${review.message}</p>${replyHTML}</div>`;
+                         });
+                         reviewsHTML += `</div>`;
+                    }
+                    reviewsHTML += `<div class="mt-12" data-aos="fade-up"><h3 class="text-2xl font-bold text-center mb-6">Leave a Review</h3><form id="review-form" class="space-y-4 bg-[var(--card-bg)] p-6 rounded-2xl"><div><label for="review-name" class="text-sm">Name</label><input type="text" id="review-name" required class="w-full mt-1 p-2 bg-gray-700 rounded-md"></div><div><label for="review-email" class="text-sm">Email</label><input type="email" id="review-email" required class="w-full mt-1 p-2 bg-gray-700 rounded-md"></div><div><label for="review-message" class="text-sm">Your Review</label><textarea id="review-message" rows="4" required class="w-full mt-1 p-2 bg-gray-700 rounded-md"></textarea></div><button type="submit" class="w-full bg-blue-600 font-bold py-3 rounded-full hover:bg-blue-700">Submit Review</button><p id="review-success" class="text-center text-green-400"></p></form></div>`;
+                    reviewsSection.innerHTML = reviewsHTML;
+                    document.getElementById('review-form').addEventListener('submit', e => {
+                        e.preventDefault();
+                        const reviewData = { name: document.getElementById('review-name').value, email: document.getElementById('review-email').value, message: document.getElementById('review-message').value, createdAt: firebase.firestore.FieldValue.serverTimestamp() };
+                        db.collection("apps").doc(appId).collection("reviews").add(reviewData)
+                            .then(() => { document.getElementById('review-success').textContent = "Thank you! Your review has been submitted."; document.getElementById('review-form').reset(); })
+                            .catch(error => alert("Error submitting review: " + error));
+                    });
+                });
+            };
+
+            // Load Recommended Apps (No changes to this function)
+            const recommendedApps = document.getElementById('recommended-apps');
+            const loadRecommendedApps = (currentAppId) => { /* ... Your existing, correct loadRecommendedApps function ... */ 
+                db.collection("apps").limit(4).get().then(snapshot => {
+                    let recommendedHTML = `<h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">You Might Also Like</h2><div class="grid grid-cols-2 sm:grid-cols-4 gap-6">`;
+                    let count = 0;
+                    snapshot.forEach(doc => {
+                        if (doc.id !== currentAppId && count < 4) {
+                             const app = doc.data();
+                             recommendedHTML += `<a href="app-detail.html?id=${doc.id}" class="bg-[var(--card-bg)] p-4 rounded-2xl text-center hover:bg-[var(--border-color)] transition-colors" data-aos="fade-up" data-aos-delay="${(count+1)*100}"><img src="assets/apps/${app.folderName}/${app.icon}" class="w-20 h-20 rounded-2xl mx-auto"><h4 class="font-bold mt-3">${app.name}</h4><p class="text-sm text-[var(--text-secondary)]">${app.subtitle}</p></a>`;
+                             count++;
+                        }
+                    });
+                    recommendedHTML += `</div>`;
+                    if (count > 0) recommendedApps.innerHTML = recommendedHTML;
+                });
+            };
+        });
+    </script>
+</body>
+</html>

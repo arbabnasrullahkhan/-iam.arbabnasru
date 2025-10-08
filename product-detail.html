@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Product Details | Arbab Nasrullah</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>:root{--bg-color:#030712;--text-color:#f3f4f6;--text-secondary:#9ca3af;--card-bg:rgba(31, 41, 55, 0.5);--border-color:rgba(55, 65, 81, 0.6);--brand-gradient:linear-gradient(90deg, #3B82F6, #8B5CF6);}html.light{--bg-color:#f9fafb;--text-color:#111827;--text-secondary:#4b5563;--card-bg:rgba(255, 255, 255, 0.7);--border-color:#e5e7eb;}body{font-family:'Inter',sans-serif;background-color:var(--bg-color);color:var(--text-color);transition:background-color .3s ease,color .3s ease;}.glass-effect{background:var(--card-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--border-color);transition:background .3s ease,border .3s ease;}.brand-gradient-text{background:var(--brand-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}</style>
+</head>
+<body class="w-full">
+      <!-- HEADER with BACK BUTTON (FIXED & ROBUST) -->
+    <header class="sticky top-0 left-0 w-full z-50 glass-effect">
+        <div class="container mx-auto px-5 py-4 grid grid-cols-3 items-center">
+                
+            <!-- Left Side: Back Button -->
+            <div class="justify-self-start">
+                <a href="shop.html" class="glass-effect flex items-center gap-2 font-semibold text-sm py-2 px-4 rounded-full hover:border-blue-500 transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    <span>Back</span>
+                </a>
+            </div>
+
+            <!-- Center: Logo -->
+            <div class="justify-self-center">
+                <a href="home.html" class="text-2xl font-extrabold tracking-tight">AN.</a>
+            </div>
+
+            <!-- Right Side: Theme Toggle -->
+            <div class="justify-self-end">
+                <button id="theme-toggle" class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors">
+                    <svg id="theme-icon-light" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <svg id="theme-icon-dark" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
+            </div>
+
+        </div>
+    </header>
+
+    <main class="container mx-auto px-5 pt-24 pb-20">
+        <!-- This container will be populated by the script -->
+        <div id="product-detail-container">
+            <p id="loading-message" class="text-center text-lg text-[var(--text-secondary)]">Loading Product...</p>
+        </div>
+    </main>
+    
+    <footer class="border-t border-[var(--border-color)]"><div class="container mx-auto px-5 py-8 text-center text-sm text-[var(--text-secondary)]"><p>© 2024 Arbab Nasrullah. All Rights Reserved.</p></div></footer>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Your Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBO54U5WtwR3rfDDHFgDbPzwF-V27Ml5m4",
+            authDomain: "portfolio-87299.firebaseapp.com",
+            projectId: "portfolio-87299",
+            storageBucket: "portfolio-87299.firebasestorage.app",
+            messagingSenderId: "458111444495",
+            appId: "1:458111444495:web:f290b11f480e6ad1fe657a",
+            measurementId: "G-6EYBX1VE63"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Light/Dark Mode Logic - no changes needed
+            const themeToggle = document.getElementById('theme-toggle');
+            const lightIcon = document.getElementById('theme-icon-light');
+            const darkIcon = document.getElementById('theme-icon-dark');
+            const applyTheme = (theme) => { document.documentElement.className = theme; if (theme === 'dark') { lightIcon.classList.add('hidden'); darkIcon.classList.remove('hidden'); } else { lightIcon.classList.remove('hidden'); darkIcon.classList.add('hidden'); } };
+            const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            applyTheme(savedTheme);
+            themeToggle.addEventListener('click', () => { const newTheme = (localStorage.getItem('theme') || 'light') === 'light' ? 'dark' : 'light'; localStorage.setItem('theme', newTheme); applyTheme(newTheme); });
+            
+            // --- FETCH SINGLE PRODUCT LOGIC (FIXED) ---
+            const container = document.getElementById('product-detail-container');
+            const loadingMessage = document.getElementById('loading-message');
+
+            // 1. Get the product ID from the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id'); // <-- This is the key part
+
+            if (!productId) {
+                loadingMessage.textContent = 'ERROR: No product ID specified in the URL.';
+                loadingMessage.classList.add('text-red-500');
+                return;
+            }
+
+            // 2. Fetch the specific document from Firestore
+            db.collection("products").doc(productId).get().then((doc) => {
+                // 3. Check if the document actually exists
+                if (doc.exists) {
+                    const product = doc.data();
+                    const salePrice = parseFloat(product.salePrice);
+                    const originalPrice = parseFloat(product.price);
+                    
+                    let imageThumbnails = '';
+                    if(product.images && product.images.length > 0) {
+                        product.images.forEach(img => {
+                            imageThumbnails += `<img src="assets/product/${img}" alt="Thumbnail" class="w-20 h-20 rounded-lg object-cover cursor-pointer border-2 border-transparent hover:border-blue-500 transition-colors thumbnail-img">`;
+                        });
+                    }
+
+                    // 4. Build the HTML with the fetched data
+                    const productHTML = `
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start" data-aos="fade-up">
+                            <!-- Image Gallery -->
+                            <div>
+                                <img id="main-product-image" src="assets/product/${product.images[0]}" alt="${product.name}" class="w-full h-auto aspect-square rounded-2xl object-cover mb-4 shadow-lg">
+                                <div class="flex gap-3 flex-wrap">
+                                    ${imageThumbnails}
+                                </div>
+                            </div>
+                            <!-- Product Info -->
+                            <div>
+                                <span class="text-sm font-semibold text-blue-400 bg-blue-500/10 py-1 px-3 rounded-full">${product.category}</span>
+                                <h1 class="text-3xl md:text-4xl font-extrabold tracking-tighter my-4">${product.name}</h1>
+                                <div class="flex items-baseline gap-3 mb-6">
+                                     ${salePrice > 0 ? `<span class="text-4xl font-bold brand-gradient-text">$${salePrice.toFixed(2)}</span><span class="text-xl text-[var(--text-secondary)] line-through">$${originalPrice.toFixed(2)}</span>` : `<span class="text-4xl font-bold brand-gradient-text">$${originalPrice.toFixed(2)}</span>`}
+                                </div>
+                                <h3 class="font-bold text-lg mb-2">Description</h3>
+                                <div class="text-[var(--text-secondary)] leading-relaxed whitespace-pre-wrap">${product.description}</div>
+                                
+                                <a id="buy-now-btn" href="#" target="_blank" class="w-full mt-8 bg-blue-600 text-white font-bold py-4 px-6 rounded-full hover:bg-blue-700 transition-transform hover:scale-105 flex items-center justify-center gap-3">
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654z"/></svg>
+                                    Buy Now via WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                    // 5. Replace the loading message with the final HTML
+                    container.innerHTML = productHTML;
+
+                    // Re-initialize AOS for the newly added content
+                    AOS.init({ duration: 800, once: true, offset: 50 });
+
+                    // 6. Add interactivity to the new elements
+                    const mainImage = document.getElementById('main-product-image');
+                    document.querySelectorAll('.thumbnail-img').forEach(thumb => {
+                        thumb.addEventListener('click', () => {
+                            mainImage.src = thumb.src;
+                        });
+                    });
+
+                    const whatsappNumber = "92xxxxxxxxxx"; // <--- ⚠️ REPLACE WITH YOUR WHATSAPP NUMBER
+                    const message = encodeURIComponent(`Hi, I'm interested in buying the product: ${product.name} (ID: ${productId})`);
+                    document.getElementById('buy-now-btn').href = `https://wa.me/${whatsappNumber}?text=${message}`;
+                    
+                } else {
+                    // This runs if the ID is valid but no product was found
+                    loadingMessage.textContent = 'Product Not Found. It may have been removed.';
+                    loadingMessage.classList.add('text-yellow-500');
+                }
+            }).catch((error) => {
+                // This runs if there's a Firebase error (e.g., permissions)
+                console.error("Error fetching product:", error);
+                loadingMessage.textContent = 'An error occurred while loading the product. Please check the console.';
+                loadingMessage.classList.add('text-red-500');
+            });
+        });
+    </script>
+</body>
+</html>

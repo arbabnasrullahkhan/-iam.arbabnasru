@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Admin Panel | Arbab Nasrullah</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display.swap" rel="stylesheet">
+    
+    <!-- ===================================================================== -->
+    <!--  CRITICAL FIX: The Alpine.js script was missing. I have added it.   -->
+    <!-- ===================================================================== -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <style>body{font-family:'Inter',sans-serif;background-color:#030712;color:#f3f4f6;}.form-input{background-color:#1f2937;border:1px solid #4b5563;color:#f3f4f6;transition:.2s;}.form-input:focus{border-color:#3B82F6;outline:0;box-shadow:0 0 0 3px rgba(59,130,246,.2);}[x-cloak]{display:none!important}</style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-4" x-data="adminApp()">
+
+    <!-- LOGIN FORM -->
+    <div id="login-container" x-show="!loggedIn" x-cloak class="w-full max-w-sm">
+        <h1 class="text-3xl font-bold text-center mb-6">App Admin Login</h1>
+        <form @submit.prevent="login" class="space-y-4">
+            <div><label for="email">Email</label><input type="email" x-model="email" required class="form-input w-full p-3 rounded-lg mt-1"></div>
+            <div><label for="password">Password</label><input type="password" x-model="password" required class="form-input w-full p-3 rounded-lg mt-1"></div>
+            <button type="submit" class="w-full bg-blue-600 font-bold py-3 rounded-full hover:bg-blue-700">Login</button>
+            <p x-text="loginError" class="text-red-400 text-sm text-center"></p>
+        </form>
+    </div>
+
+    <!-- ADMIN DASHBOARD -->
+    <div id="admin-dashboard" x-show="loggedIn" x-cloak class="w-full max-w-7xl">
+        <header class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-bold">App Dashboard</h1>
+            <button @click="logout" class="bg-red-600 font-bold py-2 px-5 rounded-full hover:bg-red-700">Logout</button>
+        </header>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- ADD/EDIT FORM -->
+            <div class="lg:col-span-1">
+                <form @submit.prevent="saveApp" class="space-y-4 p-6 bg-gray-900 rounded-2xl">
+                    <h2 x-text="formMode === 'add' ? 'Add New App' : 'Edit App'" class="text-2xl font-bold mb-4"></h2>
+                    <input type="hidden" x-model="appId">
+                    <div><label>App Name*</label><input type="text" x-model="appName" required class="form-input w-full mt-1 p-2 rounded-md"></div>
+                    <div><label>Subtitle*</label><input type="text" x-model="appSubtitle" required class="form-input w-full mt-1 p-2 rounded-md"></div>
+                    <div><label>Description*</label><textarea x-model="appDesc" rows="5" required class="form-input w-full mt-1 p-2 rounded-md"></textarea></div>
+                    <div><label>Folder Name*</label><input type="text" x-model="appFolder" required class="form-input w-full mt-1 p-2 rounded-md"><p class="text-xs text-gray-400 mt-1">e.g., `trading`. Path: `assets/apps/trading/`</p></div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div><label>Icon*</label><input type="text" x-model="appIcon" required class="form-input w-full mt-1 p-2 rounded-md" placeholder="icon.png"></div>
+                        <div><label>Banner*</label><input type="text" x-model="appBanner" required class="form-input w-full mt-1 p-2 rounded-md" placeholder="banner.jpg"></div>
+                    </div>
+                    <div><label>Screenshots* (comma-separated)</label><input type="text" x-model="appScreenshots" required class="form-input w-full mt-1 p-2 rounded-md" placeholder="ss1.png, ss2.png"></div>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div><label>Rating*</label><input type="text" x-model="appRating" required class="form-input w-full mt-1 p-2 rounded-md" placeholder="4.8"></div>
+                        <div><label>Downloads*</label><input type="text" x-model="appDownloads" required class="form-input w-full mt-1 p-2 rounded-md" placeholder="50k+"></div>
+                        <div><label>Users*</label><input type="text" x-model="appUsers" required class="form-input w-full mt-1 p-2 rounded-md" placeholder="10k+"></div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div><label>Android Link*</label><input type="text" x-model="appAndroidLink" required class="form-input w-full mt-1 p-2 rounded-md"></div>
+                        <div><label>iOS Link*</label><input type="text" x-model="appIosLink" required class="form-input w-full mt-1 p-2 rounded-md"></div>
+                    </div>
+                     <div class="grid grid-cols-2 gap-4">
+                        <div><label>Company Name*</label><input type="text" x-model="appCompany" required class="form-input w-full mt-1 p-2 rounded-md"></div>
+                        <div><label>Support Email*</label><input type="email" x-model="appEmail" required class="form-input w-full mt-1 p-2 rounded-md"></div>
+                    </div>
+                    <div><label>Launch Date*</label><input type="date" x-model="appLaunchDate" required class="form-input w-full mt-1 p-2 rounded-md"></div>
+                    <div class="flex gap-4"><button type="submit" class="w-full bg-blue-600 font-bold py-3 rounded-full hover:bg-blue-700">Save App</button><button type="button" x-show="formMode === 'edit'" @click="resetForm" class="w-full bg-gray-600 font-bold py-3 rounded-full hover:bg-gray-700">Cancel</button></div>
+                </form>
+            </div>
+            
+            <!-- LIST & REVIEWS -->
+            <div class="lg:col-span-2 space-y-8">
+                <div class="p-6 bg-gray-900 rounded-2xl"><h2 class="text-2xl font-bold mb-4">Existing Apps</h2><div x-html="appsListHTML" @click="handleAppClick" class="space-y-3"></div></div>
+                <div class="p-6 bg-gray-900 rounded-2xl"><h2 class="text-2xl font-bold mb-4">Manage Reviews</h2><div x-html="reviewsListHTML" @click="handleReviewClick"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script>
+         const firebaseConfig = { 
+            apiKey: "AIzaSyBO54U5WtwR3rfDDHFgDbPzwF-V27Ml5m4",
+             authDomain: "portfolio-87299.firebaseapp.com",
+              projectId: "portfolio-87299",
+               storageBucket: "portfolio-87299.firebasestorage.app",
+                messagingSenderId: "458111444495",
+                 appId: "1:458111444495:web:f290b11f480e6ad1fe657a",
+                  measurementId: "G-6EYBX1VE63" };
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        function adminApp() {
+            return {
+                loggedIn: false, email: '', password: '', loginError: '',
+                formMode: 'add', appId: '', appName: '', appSubtitle: '', appDesc: '', appFolder: '', appIcon: '', appBanner: '', appScreenshots: '', appRating: '', appDownloads: '', appUsers: '', appAndroidLink: '', appIosLink: '', appCompany: '', appEmail: '', appLaunchDate: '',
+                appsListHTML: '<p>Loading apps...</p>', reviewsListHTML: '<p>Select an app to see reviews.</p>',
+                
+                init() {
+                    auth.onAuthStateChanged(user => {
+                        this.loggedIn = !!user;
+                        if (this.loggedIn) { this.loadApps(); }
+                    });
+                },
+                login() { auth.signInWithEmailAndPassword(this.email, this.password).catch(err => this.loginError = err.message); },
+                logout() { auth.signOut(); },
+                
+                async loadApps() {
+                    const snapshot = await db.collection('apps').orderBy('createdAt', 'desc').get();
+                    if (snapshot.empty) { this.appsListHTML = `<p>No apps yet.</p>`; return; }
+                    this.appsListHTML = snapshot.docs.map(doc => `
+                        <div class="flex justify-between items-center bg-gray-800 p-3 rounded-lg"><p class="font-semibold">${doc.data().name}</p><div class="flex gap-4"><button class="reviews-btn text-blue-400 text-sm" data-id="${doc.id}">Reviews</button><button class="edit-btn text-yellow-400 text-sm" data-id="${doc.id}">Edit</button><button class="delete-btn text-red-400 text-sm" data-id="${doc.id}">Delete</button></div></div>
+                    `).join('');
+                },
+                
+                async loadReviews(appId) {
+                    this.reviewsListHTML = `<p>Loading reviews for this app...</p>`;
+                    const snapshot = await db.collection('apps').doc(appId).collection('reviews').orderBy('createdAt', 'desc').get();
+                    if (snapshot.empty) { this.reviewsListHTML = `<p>No reviews for this app yet.</p>`; return; }
+                    this.reviewsListHTML = snapshot.docs.map(doc => {
+                        const review = doc.data();
+                        const replyForm = !review.reply ? `<form class="reply-form mt-2 flex gap-2" data-appid="${appId}" data-reviewid="${doc.id}"><input type="text" class="form-input flex-1 p-1 rounded" placeholder="Reply..."><button type="submit" class="bg-blue-600 px-3 py-1 text-sm rounded">Send</button></form>` : `<p class="mt-2 text-sm text-green-400"><strong>Replied:</strong> ${review.reply}</p>`;
+                        return `<div class="bg-gray-800 p-3 rounded-lg mb-2"><p><strong>${review.name}</strong> (${review.email})</p><p class="text-sm text-gray-400">${review.message}</p>${replyForm}</div>`;
+                    }).join('');
+                },
+                
+                async saveApp() {
+                    const appData = {
+                        name: this.appName, subtitle: this.appSubtitle, description: this.appDesc, folderName: this.appFolder, icon: this.appIcon, banner: this.appBanner, screenshots: this.appScreenshots.split(',').map(s=>s.trim()),
+                        rating: this.appRating, downloads: this.appDownloads, users: this.appUsers, androidLink: this.appAndroidLink, iosLink: this.appIosLink, companyName: this.appCompany, supportEmail: this.appEmail, launchDate: this.appLaunchDate,
+                    };
+                    try {
+                        if (this.formMode === 'add') {
+                            appData.createdAt = firebase.firestore.FieldValue.serverTimestamp();
+                            await db.collection('apps').add(appData);
+                            alert('App added successfully!');
+                        } else {
+                            await db.collection('apps').doc(this.appId).update(appData);
+                            alert('App updated successfully!');
+                        }
+                        this.resetForm();
+                        this.loadApps();
+                    } catch (error) { console.error("Error saving app:", error); alert("Error saving app."); }
+                },
+                
+                async handleAppClick(e) {
+                    const id = e.target.dataset.id;
+                    if (e.target.classList.contains('delete-btn')) {
+                        if (confirm('Are you sure? This will delete the app and all its reviews.')) { await db.collection('apps').doc(id).delete(); alert('App deleted!'); this.loadApps(); this.reviewsListHTML = '<p>Select an app to see reviews.</p>'; }
+                    }
+                    if (e.target.classList.contains('edit-btn')) {
+                        const doc = await db.collection('apps').doc(id).get();
+                        const app = doc.data();
+                        this.formMode = 'edit'; this.appId = id; this.appName = app.name; this.appSubtitle = app.subtitle; this.appDesc = app.description; this.appFolder = app.folderName; this.appIcon = app.icon; this.appBanner = app.banner; this.appScreenshots = app.screenshots.join(', ');
+                        this.appRating = app.rating; this.appDownloads = app.downloads; this.appUsers = app.users; this.appAndroidLink = app.androidLink; this.appIosLink = app.iosLink; this.appCompany = app.companyName; this.appEmail = app.supportEmail; this.appLaunchDate = app.launchDate;
+                        window.scrollTo(0, 0);
+                    }
+                    if (e.target.classList.contains('reviews-btn')) {
+                        this.loadReviews(id);
+                    }
+                },
+                
+                async handleReviewClick(e) {
+                    if (e.target.closest('.reply-form')) {
+                        e.preventDefault();
+                        const form = e.target.closest('.reply-form');
+                        const replyText = form.querySelector('input').value;
+                        if (!replyText) return;
+                        const { appid, reviewid } = form.dataset;
+                        await db.collection('apps').doc(appid).collection('reviews').doc(reviewid).update({ reply: replyText });
+                        alert('Reply sent!');
+                        this.loadReviews(appid);
+                    }
+                },
+
+                resetForm() {
+                    this.formMode = 'add'; this.appId = ''; this.appName = ''; this.appSubtitle = ''; this.appDesc = ''; this.appFolder = ''; this.appIcon = ''; this.appBanner = ''; this.appScreenshots = ''; this.appRating = ''; this.appDownloads = ''; this.appUsers = '';
+                    this.appAndroidLink = ''; this.appIosLink = ''; this.appCompany = ''; this.appEmail = ''; this.appLaunchDate = '';
+                }
+            }
+        }
+    </script>
+</body>
+</html>

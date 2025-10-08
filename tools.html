@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin: Upload Product</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #030712; color: #f3f4f6; }
+        .form-input { background-color: #1f2937; border: 1px solid #4b5563; color: #f3f4f6; }
+        .form-input:focus { border-color: #3B82F6; outline: none; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2); }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+
+    <div class="w-full max-w-lg p-8 space-y-6 bg-[#111827] rounded-2xl shadow-lg">
+        <h1 class="text-3xl font-bold text-center text-white">Add New Product</h1>
+        
+        <form id="upload-form" class="space-y-5">
+            <div>
+                <label for="product-name" class="block text-sm font-medium text-gray-400 mb-1">Product Name</label>
+                <input type="text" id="product-name" required class="form-input w-full p-3 rounded-lg">
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label for="product-price" class="block text-sm font-medium text-gray-400 mb-1">Price (e.g., 2500)</label>
+                    <input type="number" id="product-price" required class="form-input w-full p-3 rounded-lg">
+                </div>
+                <div>
+                    <label for="product-sale-price" class="block text-sm font-medium text-gray-400 mb-1">Sale Price (Optional)</label>
+                    <input type="number" id="product-sale-price" class="form-input w-full p-3 rounded-lg">
+                </div>
+            </div>
+            <div>
+                <label for="product-description" class="block text-sm font-medium text-gray-400 mb-1">Description</label>
+                <textarea id="product-description" rows="4" required class="form-input w-full p-3 rounded-lg"></textarea>
+            </div>
+            <div>
+                <label for="product-image" class="block text-sm font-medium text-gray-400 mb-1">Product Image</label>
+                <input type="file" id="product-image" accept="image/*" required class="w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700">
+            </div>
+            <div>
+                <button type="submit" id="submit-btn" class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-full hover:bg-blue-700 transition-transform hover:scale-105 disabled:bg-gray-500">
+                    Upload Product
+                </button>
+            </div>
+        </form>
+        <div id="status-message" class="text-center text-sm font-medium"></div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script type="module">
+        // Import the functions you need from the SDKs
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+        import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBO54U5WtwR3rfDDHFgDbPzwF-V27Ml5m4",
+            authDomain: "portfolio-87299.firebaseapp.com",
+            projectId: "portfolio-87299",
+            storageBucket: "portfolio-87299.appspot.com", // Corrected storageBucket name
+            messagingSenderId: "458111444495",
+            appId: "1:458111444495:web:f290b11f480e6ad1fe657a",
+            measurementId: "G-6EYBX1VE63"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const storage = getStorage(app);
+        
+        const form = document.getElementById('upload-form');
+        const statusMessage = document.getElementById('status-message');
+        const submitBtn = document.getElementById('submit-btn');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Uploading...';
+            statusMessage.textContent = 'Processing image...';
+            statusMessage.style.color = '#9ca3af';
+
+            // 1. Get form data
+            const name = document.getElementById('product-name').value;
+            const price = Number(document.getElementById('product-price').value);
+            const salePrice = Number(document.getElementById('product-sale-price').value) || null;
+            const description = document.getElementById('product-description').value;
+            const imageFile = document.getElementById('product-image').files[0];
+
+            if (!imageFile) {
+                statusMessage.textContent = 'Please select an image.';
+                statusMessage.style.color = '#f87171';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Upload Product';
+                return;
+            }
+
+            try {
+                // 2. Upload image to Firebase Storage
+                const imageRef = ref(storage, `products/${Date.now()}-${imageFile.name}`);
+                await uploadBytes(imageRef, imageFile);
+                
+                // 3. Get image URL
+                const imageUrl = await getDownloadURL(imageRef);
+                statusMessage.textContent = 'Image uploaded. Saving product data...';
+
+                // 4. Save product data to Firestore
+                await addDoc(collection(db, "products"), {
+                    name: name,
+                    price: price,
+                    salePrice: salePrice,
+                    description: description,
+                    imageUrl: imageUrl,
+                    createdAt: new Date()
+                });
+
+                statusMessage.textContent = 'Product uploaded successfully!';
+                statusMessage.style.color = '#34d399';
+                form.reset();
+
+            } catch (error) {
+                console.error("Error uploading product: ", error);
+                statusMessage.textContent = 'Error uploading product. Please try again.';
+                statusMessage.style.color = '#f87171';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Upload Product';
+            }
+        });
+    </script>
+</body>
+</html>

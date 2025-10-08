@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Terms & Conditions | Arbab Nasrullah</title>
+    <meta name="description" content="Terms and Conditions for the use of Arbab Nasrullah's portfolio website and services.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* CSS Variables for Theming (Consistent with other pages) */
+        :root {
+            --bg-color: #030712;
+            --text-color: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --card-bg: rgba(31, 41, 55, 0.5);
+            --border-color: rgba(55, 65, 81, 0.6);
+            --brand-gradient: linear-gradient(90deg, #3B82F6, #8B5CF6);
+        }
+
+        html.light {
+            --bg-color: #f9fafb;
+            --text-color: #111827;
+            --text-secondary: #4b5563;
+            --card-bg: rgba(255, 255, 255, 0.7);
+            --border-color: #e5e7eb;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .glass-effect {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            transition: background 0.3s ease, border 0.3s ease;
+        }
+
+        .brand-gradient-text {
+            background: var(--brand-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Styling for legal text content */
+        .legal-content h2 {
+            font-size: 1.875rem; /* text-3xl */
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+        .legal-content h3 {
+            font-size: 1.5rem; /* text-2xl */
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-color);
+        }
+        .legal-content p {
+            margin-bottom: 1rem;
+            line-height: 1.75;
+            color: var(--text-secondary);
+        }
+        .legal-content a {
+            color: #3B82F6;
+            text-decoration: underline;
+        }
+        .legal-content ul {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body class="w-full">
+
+  <!-- HEADER with BACK BUTTON (FIXED & ROBUST) -->
+    <header class="sticky top-0 left-0 w-full z-50 glass-effect">
+        <div class="container mx-auto px-5 py-4 grid grid-cols-3 items-center">
+                
+            <!-- Left Side: Back Button -->
+            <div class="justify-self-start">
+                <a href="faq.html" class="glass-effect flex items-center gap-2 font-semibold text-sm py-2 px-4 rounded-full hover:border-blue-500 transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    <span>Back</span>
+                </a>
+            </div>
+
+            <!-- Center: Logo -->
+            <div class="justify-self-center">
+                <a href="home.html" class="text-2xl font-extrabold tracking-tight">AN.</a>
+            </div>
+
+            <!-- Right Side: Theme Toggle -->
+            <div class="justify-self-end">
+                <button id="theme-toggle" class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors">
+                    <svg id="theme-icon-light" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <svg id="theme-icon-dark" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
+            </div>
+
+        </div>
+    </header>
+
+    <main class="container mx-auto px-5 pt-24 pb-20">
+        
+        <section id="terms-page">
+            <div class="text-center mb-12" data-aos="fade-down">
+                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tighter">Terms & <span class="brand-gradient-text">Conditions</span></h1>
+                <p class="mt-4 text-base md:text-lg text-[var(--text-secondary)]">Last updated: July 29, 2025</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto legal-content glass-effect rounded-2xl p-6 md:p-10" data-aos="fade-up" data-aos-delay="200">
+                <p>Please read these terms and conditions carefully before using my portfolio website (the "Service") operated by Arbab Nasrullah ("me", "I", or "my").</p>
+                
+                <h2>1. Acceptance of Terms</h2>
+                <p>By accessing and using this Service, you accept and agree to be bound by the terms and provision of this agreement. In addition, when using these particular services, you shall be subject to any posted guidelines or rules applicable to such services. Any participation in this service will constitute acceptance of this agreement.</p>
+                
+                <h3>2. Intellectual Property</h3>
+                <p>The Service and its original content, features, and functionality are and will remain the exclusive property of Arbab Nasrullah. The content, including but not limited to project images, text, graphics, logos, and UI designs, is protected by copyright and other intellectual property laws. You may not reuse, republish, or reprint such content without my written consent.</p>
+                
+                <h3>3. Use of Portfolio and Tools</h3>
+                <p>The tools provided on this website, such as the Invoice Generator or Resume Builder, are for personal, non-commercial use only. While I strive to ensure they are functional and accurate, they are provided "as is" without any warranty of any kind. I am not liable for any issues, damages, or data loss that may arise from their use.</p>
+                
+                <h3>4. Links to Other Web Sites</h3>
+                <p>My Service may contain links to third-party web sites or services that are not owned or controlled by me (e.g., live previews of client projects, social media profiles). I have no control over, and assume no responsibility for, the content, privacy policies, or practices of any third-party web sites or services. You further acknowledge and agree that I shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with the use of or reliance on any such content, goods or services available on or through any such web sites or services.</p>
+                
+                <h3>5. Limitation of Liability</h3>
+                <p>In no event shall Arbab Nasrullah be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the Service.</p>
+                
+                <h3>6. Changes to Terms</h3>
+                <p>I reserve the right, at my sole discretion, to modify or replace these Terms at any time. What constitutes a material change will be determined at my sole discretion. By continuing to access or use my Service after those revisions become effective, you agree to be bound by the revised terms.</p>
+                
+                <h2>Contact Me</h2>
+                <p>If you have any questions about these Terms, please <a href="contact.html">contact me</a>.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-[var(--border-color)]">
+        <div class="container mx-auto px-5 py-8 text-center text-sm text-[var(--text-secondary)]">
+            <p>&copy; 2024 Arbab Nasrullah. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- All Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Initialize AOS
+            AOS.init({ duration: 800, once: true, offset: 50 });
+
+            // 2. Light/Dark Mode Logic
+            const themeToggle = document.getElementById('theme-toggle');
+            const lightIcon = document.getElementById('theme-icon-light');
+            const darkIcon = document.getElementById('theme-icon-dark');
+            const applyTheme = (theme) => {
+                document.documentElement.className = theme;
+                if (theme === 'dark') {
+                    lightIcon.classList.add('hidden');
+                    darkIcon.classList.remove('hidden');
+                } else {
+                    lightIcon.classList.remove('hidden');
+                    darkIcon.classList.add('hidden');
+                }
+            };
+            const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            applyTheme(savedTheme);
+            themeToggle.addEventListener('click', () => {
+                const newTheme = (localStorage.getItem('theme') || 'light') === 'light' ? 'dark' : 'light';
+                localStorage.setItem('theme', newTheme);
+                applyTheme(newTheme);
+            });
+        });
+    </script>
+</body>
+</html>

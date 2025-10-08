@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>AN. App Store | Arbab Nasrullah</title>
+    <meta name="description" content="Discover and download exclusive apps and games developed by Arbab Nasrullah.">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display.swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>:root{--bg-color:#030712;--text-color:#f3f4f6;--text-secondary:#9ca3af;--card-bg:rgba(31,41,55,0.5);--border-color:rgba(55,65,81,0.6);--brand-gradient:linear-gradient(90deg,#3B82F6,#8B5CF6)}html.light{--bg-color:#f9fafb;--text-color:#111827;--text-secondary:#4b5563;--card-bg:rgba(255,255,255,0.7);--border-color:#e5e7eb}body{font-family:'Inter',sans-serif;background-color:var(--bg-color);color:var(--text-color);transition:background-color .3s ease,color .3s ease}.glass-effect{background:var(--card-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--border-color);transition:background .3s ease,border .3s ease}.brand-gradient-text{background:var(--brand-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}</style>
+</head>
+<body class="w-full">
+
+  <!-- HEADER with BACK BUTTON (FIXED & ROBUST) -->
+    <header class="sticky top-0 left-0 w-full z-50 glass-effect">
+        <div class="container mx-auto px-5 py-4 grid grid-cols-3 items-center">
+                
+            <!-- Left Side: Back Button -->
+            <div class="justify-self-start">
+                <a href="home.html" class="glass-effect flex items-center gap-2 font-semibold text-sm py-2 px-4 rounded-full hover:border-blue-500 transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    <span>Back</span>
+                </a>
+            </div>
+
+            <!-- Center: Logo -->
+            <div class="justify-self-center">
+                <a href="home.html" class="text-2xl font-extrabold tracking-tight">AN.</a>
+            </div>
+
+            <!-- Right Side: Theme Toggle -->
+            <div class="justify-self-end">
+                <button id="theme-toggle" class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors">
+                    <svg id="theme-icon-light" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <svg id="theme-icon-dark" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
+            </div>
+
+        </div>
+    </header>
+
+
+    <main class="container mx-auto px-5 pt-24 pb-20">
+        <section id="app-store-page">
+            <div class="text-center mb-8" data-aos="fade-down">
+                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tighter">App <span class="brand-gradient-text"> Store</span></h1>
+                <p class="mt-4 text-base md:text-lg text-[var(--text-secondary)]">Discover apps and games built with passion.</p>
+            </div>
+            
+            <!-- ===================================================================== -->
+            <!--  NEW SEARCH BAR ADDED HERE                                            -->
+            <!-- ===================================================================== -->
+            <div class="max-w-xl mx-auto mb-12" data-aos="fade-down" data-aos-delay="100">
+                <div class="relative">
+                    <input type="text" id="search-bar" placeholder="Search for apps or games..." class="w-full p-4 pl-12 bg-[var(--card-bg)] border border-[var(--border-color)] rounded-full focus:ring-2 focus:ring-blue-500 focus:outline-none transition-shadow">
+                    <svg class="w-6 h-6 absolute top-1/2 left-4 transform -translate-y-1/2 text-[var(--text-secondary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </div>
+            </div>
+            
+            <div id="apps-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Loading Skeletons will be replaced by Firebase data -->
+                <div class="bg-[var(--card-bg)] p-4 rounded-xl animate-pulse flex items-center gap-4"><div class="bg-gray-700 w-20 h-20 rounded-2xl"></div><div class="flex-1 space-y-2"><div class="bg-gray-700 h-5 w-3/4 rounded"></div><div class="bg-gray-700 h-4 w-1/2 rounded"></div></div></div>
+                <div class="bg-[var(--card-bg)] p-4 rounded-xl animate-pulse flex items-center gap-4"><div class="bg-gray-700 w-20 h-20 rounded-2xl"></div><div class="flex-1 space-y-2"><div class="bg-gray-700 h-5 w-3/4 rounded"></div><div class="bg-gray-700 h-4 w-1/2 rounded"></div></div></div>
+                <div class="bg-[var(--card-bg)] p-4 rounded-xl animate-pulse flex items-center gap-4"><div class="bg-gray-700 w-20 h-20 rounded-2xl"></div><div class="flex-1 space-y-2"><div class="bg-gray-700 h-5 w-3/4 rounded"></div><div class="bg-gray-700 h-4 w-1/2 rounded"></div></div></div>
+            </div>
+             <p id="no-results-message" class="hidden col-span-full text-center text-[var(--text-secondary)] mt-8">No apps found matching your search.</p>
+        </section>
+    </main>
+    
+    <footer class="border-t border-[var(--border-color)]"><div class="container mx-auto px-5 py-8 text-center text-sm text-[var(--text-secondary)]"><p>© 2024 Arbab Nasrullah. All Rights Reserved.</p></div></footer>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        const firebaseConfig = { 
+            apiKey: "AIzaSyBO54U5WtwR3rfDDHFgDbPzwF-V27Ml5m4",
+             authDomain: "portfolio-87299.firebaseapp.com",
+              projectId: "portfolio-87299",
+               storageBucket: "portfolio-87299.firebasestorage.app",
+                messagingSenderId: "458111444495",
+                 appId: "1:458111444495:web:f290b11f480e6ad1fe657a",
+                  measurementId: "G-6EYBX1VE63" 
+                  };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        document.addEventListener('DOMContentLoaded', () => {
+            AOS.init({ duration: 800, once: true, offset: 50 });
+            // Light/Dark Mode Logic (same as before)
+            const themeToggle=document.getElementById("theme-toggle"),lightIcon=document.getElementById("theme-icon-light"),darkIcon=document.getElementById("theme-icon-dark"),applyTheme=e=>{document.documentElement.className=e,"dark"===e?(lightIcon.classList.add("hidden"),darkIcon.classList.remove("hidden")):(lightIcon.classList.remove("hidden"),darkIcon.classList.add("hidden"))},savedTheme=localStorage.getItem("theme")||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");applyTheme(savedTheme),themeToggle.addEventListener("click",()=>{const e="light"===(localStorage.getItem("theme")||"light")?"dark":"light";localStorage.setItem("theme",e),applyTheme(e)});
+
+            const appsGrid = document.getElementById('apps-grid');
+            const searchBar = document.getElementById('search-bar');
+            const noResultsMessage = document.getElementById('no-results-message');
+            let allApps = []; // To store all apps fetched from Firebase
+
+            // Fetch and store all apps once
+            db.collection("apps").orderBy("createdAt", "desc").get().then((querySnapshot) => {
+                appsGrid.innerHTML = ''; // Clear loading skeletons
+                if (querySnapshot.empty) {
+                    appsGrid.innerHTML = `<p class="col-span-full text-center text-[var(--text-secondary)]">No apps found yet. Check back soon!</p>`;
+                    return;
+                }
+                querySnapshot.forEach((doc) => {
+                    allApps.push({ id: doc.id, ...doc.data() });
+                });
+                displayApps(allApps); // Display all apps initially
+            }).catch(error => console.error("Error fetching apps: ", error));
+
+            // Function to display apps
+            function displayApps(appsToDisplay) {
+                appsGrid.innerHTML = '';
+                if (appsToDisplay.length === 0) {
+                    noResultsMessage.classList.remove('hidden');
+                } else {
+                    noResultsMessage.classList.add('hidden');
+                }
+                
+                appsToDisplay.forEach((app) => {
+                    const appCard = `
+                        <a href="app-detail.html?id=${app.id}" class="app-card bg-[var(--card-bg)] p-4 rounded-2xl flex items-center gap-4 hover:bg-[var(--border-color)] transition-colors" data-aos="fade-up">
+                            <img src="assets/apps/${app.folderName}/${app.icon}" alt="${app.name} Icon" class="w-20 h-20 rounded-2xl shrink-0">
+                            <div>
+                                <h3 class="font-bold text-lg">${app.name}</h3>
+                                <p class="text-sm text-[var(--text-secondary)]">${app.subtitle}</p>
+                                <div class="flex items-center gap-1 text-yellow-400 text-sm mt-1">
+                                    <span>${app.rating}</span>
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                </div>
+                            </div>
+                        </a>
+                    `;
+                    appsGrid.innerHTML += appCard;
+                });
+            }
+
+            // Search functionality
+            searchBar.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                const filteredApps = allApps.filter(app => 
+                    app.name.toLowerCase().includes(searchTerm) || 
+                    app.subtitle.toLowerCase().includes(searchTerm)
+                );
+                displayApps(filteredApps);
+            });
+        });
+    </script>
+</body>
+</html>

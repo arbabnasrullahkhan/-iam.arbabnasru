@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>FAQ | Arbab Nasrullah</title>
+    <meta name="description" content="Frequently asked questions about Arbab Nasrullah's services, process, and expertise.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* CSS Variables for Theming (Consistent with other pages) */
+        :root {
+            --bg-color: #030712;
+            --text-color: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --card-bg: rgba(31, 41, 55, 0.5);
+            --border-color: rgba(55, 65, 81, 0.6);
+            --brand-gradient: linear-gradient(90deg, #3B82F6, #8B5CF6);
+        }
+
+        html.light {
+            --bg-color: #f9fafb;
+            --text-color: #111827;
+            --text-secondary: #4b5563;
+            --card-bg: rgba(255, 255, 255, 0.7);
+            --border-color: #e5e7eb;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .glass-effect {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            transition: background 0.3s ease, border 0.3s ease;
+        }
+
+        .brand-gradient-text {
+            background: var(--brand-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="w-full">
+  <!-- HEADER with BACK BUTTON (FIXED & ROBUST) -->
+    <header class="sticky top-0 left-0 w-full z-50 glass-effect">
+        <div class="container mx-auto px-5 py-4 grid grid-cols-3 items-center">
+                
+            <!-- Left Side: Back Button -->
+            <div class="justify-self-start">
+                <a href="home.html" class="glass-effect flex items-center gap-2 font-semibold text-sm py-2 px-4 rounded-full hover:border-blue-500 transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    <span>Back</span>
+                </a>
+            </div>
+
+            <!-- Center: Logo -->
+            <div class="justify-self-center">
+                <a href="home.html" class="text-2xl font-extrabold tracking-tight">AN.</a>
+            </div>
+
+            <!-- Right Side: Theme Toggle -->
+            <div class="justify-self-end">
+                <button id="theme-toggle" class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors">
+                    <svg id="theme-icon-light" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <svg id="theme-icon-dark" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
+            </div>
+
+        </div>
+    </header>
+
+    <main class="container mx-auto px-5 pt-24 pb-20">
+        
+        <!-- FAQ SECTION -->
+        <section id="faq-page">
+            <div class="text-center mb-12" data-aos="fade-down">
+                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tighter">Frequently Asked <span class="brand-gradient-text">Questions</span></h1>
+                <p class="mt-4 text-base md:text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">Find answers to common questions about my services and process.</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto space-y-4" data-aos="fade-up" data-aos-delay="200">
+                <!-- FAQ Item 1 -->
+                <div class="glass-effect rounded-lg">
+                    <button class="faq-question w-full flex justify-between items-center text-left p-5 font-semibold text-lg">
+                        <span>How can I hire you for a project?</span>
+                        <svg class="faq-arrow w-5 h-5 shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <p class="px-5 pb-5 text-[var(--text-secondary)]">The best way is to fill out the form on the <a href="contact.html" class="text-blue-400 underline">Contact page</a> or send me a direct message on WhatsApp. We can schedule a brief call to discuss your project requirements, goals, and see if we're a good fit to work together.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="glass-effect rounded-lg">
+                    <button class="faq-question w-full flex justify-between items-center text-left p-5 font-semibold text-lg">
+                        <span>What is your pricing model?</span>
+                         <svg class="faq-arrow w-5 h-5 shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <p class="px-5 pb-5 text-[var(--text-secondary)]">I prefer to provide a fixed-price quote for the entire project to ensure complete transparency. This means you know the total cost upfront with no hidden fees. The price is based on the project's scope, complexity, and the features required.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="glass-effect rounded-lg">
+                    <button class="faq-question w-full flex justify-between items-center text-left p-5 font-semibold text-lg">
+                        <span>What technologies do you primarily use?</span>
+                         <svg class="faq-arrow w-5 h-5 shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <p class="px-5 pb-5 text-[var(--text-secondary)]">My core stack includes modern front-end technologies like HTML5, CSS3, and JavaScript. For rapid and responsive UI development, I specialize in Tailwind CSS. For backend services and databases, I am proficient with Firebase.</p>
+                    </div>
+                </div>
+
+                 <!-- FAQ Item 4 -->
+                <div class="glass-effect rounded-lg">
+                    <button class="faq-question w-full flex justify-between items-center text-left p-5 font-semibold text-lg">
+                        <span>Can you maintain a website after it's built?</span>
+                         <svg class="faq-arrow w-5 h-5 shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <p class="px-5 pb-5 text-[var(--text-secondary)]">Yes, I offer monthly maintenance packages that include updates, security checks, performance monitoring, and minor content changes. This ensures your website remains secure, fast, and up-to-date long after launch.</p>
+                    </div>
+                </div>
+                
+                 <!-- FAQ Item 5 -->
+                <div class="glass-effect rounded-lg">
+                    <button class="faq-question w-full flex justify-between items-center text-left p-5 font-semibold text-lg">
+                        <span>What is ANK TRADER?</span>
+                         <svg class="faq-arrow w-5 h-5 shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <p class="px-5 pb-5 text-[var(--text-secondary)]">ANK TRADER is my personal venture into the world of financial markets. It's where I apply analytical skills to trading and share insights. This experience in data analysis and strategy complements my technical development skills by bringing a unique, business-oriented perspective to my projects.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- LEGAL PAGES LINKS SECTION -->
+        <section id="legal-links" class="py-20 mt-10">
+            <div class="text-center mb-10" data-aos="fade-up">
+                <h2 class="text-3xl font-bold">Important Information</h2>
+                <p class="mt-2 text-[var(--text-secondary)]">Review my site policies and disclaimers.</p>
+            </div>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-6" data-aos="fade-up" data-aos-delay="200">
+                <!-- Terms & Conditions Button -->
+                <a href="terms.html" class="w-full sm:w-auto glass-effect flex items-center gap-3 py-4 px-6 rounded-xl hover:border-blue-500 transition-all duration-300">
+                    <svg class="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    <span class="font-semibold">Terms & Conditions</span>
+                </a>
+                <!-- Blog Button -->
+                <a href="blog.html" class="w-full sm:w-auto glass-effect flex items-center gap-3 py-4 px-6 rounded-xl hover:border-green-500 transition-all duration-300">
+                    <svg class="w-7 h-7 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                        <span class="font-semibold">Visit My Blog</span>
+                        </a>
+                <!-- Disclaimer Button -->
+                <a href="disclaimer.html" class="w-full sm:w-auto glass-effect flex items-center gap-3 py-4 px-6 rounded-xl hover:border-yellow-500 transition-all duration-300">
+                    <svg class="w-7 h-7 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                    <span class="font-semibold">Disclaimer</span>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-[var(--border-color)]">
+        <div class="container mx-auto px-5 py-8 text-center text-sm text-[var(--text-secondary)]">
+            <p>&copy; 2024 Arbab Nasrullah. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- All Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Initialize AOS
+            AOS.init({ duration: 800, once: true, offset: 50 });
+
+            // 2. Light/Dark Mode Logic
+            const themeToggle = document.getElementById('theme-toggle');
+            const lightIcon = document.getElementById('theme-icon-light');
+            const darkIcon = document.getElementById('theme-icon-dark');
+            const applyTheme = (theme) => {
+                document.documentElement.className = theme;
+                if (theme === 'dark') {
+                    lightIcon.classList.add('hidden');
+                    darkIcon.classList.remove('hidden');
+                } else {
+                    lightIcon.classList.remove('hidden');
+                    darkIcon.classList.add('hidden');
+                }
+            };
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            applyTheme(savedTheme);
+            themeToggle.addEventListener('click', () => {
+                const newTheme = (localStorage.getItem('theme') || 'light') === 'light' ? 'dark' : 'light';
+                localStorage.setItem('theme', newTheme);
+                applyTheme(newTheme);
+            });
+
+            // 3. FAQ Accordion Logic
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const answer = question.nextElementSibling;
+                    const arrow = question.querySelector('.faq-arrow');
+                    const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
+                    
+                    document.querySelectorAll('.faq-answer').forEach(ans => ans.style.maxHeight = '0px');
+                    document.querySelectorAll('.faq-arrow').forEach(arr => arr.style.transform = 'rotate(0deg)');
+
+                    if (!isOpen) {
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                        arrow.style.transform = 'rotate(180deg)';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

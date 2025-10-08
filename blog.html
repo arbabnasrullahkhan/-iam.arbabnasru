@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Blog | Arbab Nasrullah</title>
+    <meta name="description" content="Insights on design, development, and trading from Arbab Nasrullah.">
+    <!-- All your consistent head tags: Favicon, Fonts, AOS, Styles -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root { --bg-color: #030712; --text-color: #f3f4f6; --text-secondary: #9ca3af; --card-bg: rgba(31, 41, 55, 0.5); --border-color: rgba(55, 65, 81, 0.6); --brand-gradient: linear-gradient(90deg, #3B82F6, #8B5CF6); }
+        html.light { --bg-color: #f9fafb; --text-color: #111827; --text-secondary: #4b5563; --card-bg: rgba(255, 255, 255, 0.7); --border-color: #e5e7eb; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s ease, color 0.3s ease; }
+        .glass-effect { background: var(--card-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--border-color); transition: background 0.3s ease, border 0.3s ease; }
+        .brand-gradient-text { background: var(--brand-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
+</head>
+<body class="w-full">
+  <!-- HEADER with BACK BUTTON (FIXED & ROBUST) -->
+    <header class="sticky top-0 left-0 w-full z-50 glass-effect">
+        <div class="container mx-auto px-5 py-4 grid grid-cols-3 items-center">
+            <div class="justify-self-start">
+                <a href="home.html" class="glass-effect flex items-center gap-2 font-semibold text-sm py-2 px-4 rounded-full hover:border-blue-500 transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    <span>Back</span>
+                </a>
+            </div>
+            <div class="justify-self-center"><a href="home.html" class="text-2xl font-extrabold tracking-tight">AN.</a></div>
+            <div class="justify-self-end">
+                <button id="theme-toggle" class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors">
+                    <svg id="theme-icon-light" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <svg id="theme-icon-dark" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-5 pt-24 pb-20">
+        <section id="blog-list">
+            <div class="text-center mb-8" data-aos="fade-down">
+                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tighter">My <span class="brand-gradient-text">Blog</span></h1>
+                <p class="mt-4 text-base md:text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">Insights on code, design, and markets.</p>
+            </div>
+
+            <div class="max-w-xl mx-auto mb-12" data-aos="fade-down" data-aos-delay="100">
+                <div class="relative">
+                    <input type="text" id="search-bar" placeholder="Search for posts..." class="w-full p-4 pl-12 bg-[var(--card-bg)] border border-[var(--border-color)] rounded-full focus:ring-2 focus:ring-blue-500 focus:outline-none transition-shadow">
+                    <svg class="w-6 h-6 absolute top-1/2 left-4 transform -translate-y-1/2 text-[var(--text-secondary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </div>
+            </div>
+
+            <div id="posts-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Loading Skeleton -->
+                <div class="glass-effect rounded-xl animate-pulse"><div class="h-48 bg-gray-700/50 rounded-t-xl"></div><div class="p-6 space-y-4"><div class="h-4 bg-gray-700/50 rounded"></div><div class="h-10 bg-gray-700/50 rounded"></div></div></div>
+                <div class="glass-effect rounded-xl animate-pulse hidden md:block"><div class="h-48 bg-gray-700/50 rounded-t-xl"></div><div class="p-6 space-y-4"><div class="h-4 bg-gray-700/50 rounded"></div><div class="h-10 bg-gray-700/50 rounded"></div></div></div>
+                <div class="glass-effect rounded-xl animate-pulse hidden lg:block"><div class="h-48 bg-gray-700/50 rounded-t-xl"></div><div class="p-6 space-y-4"><div class="h-4 bg-gray-700/50 rounded"></div><div class="h-10 bg-gray-700/50 rounded"></div></div></div>
+            </div>
+            <p id="no-results-message" class="hidden col-span-full text-center text-[var(--text-secondary)] mt-8">No posts found matching your search.</p>
+        </section>
+    </main>
+
+    <footer class="border-t border-[var(--border-color)]">
+        <div class="container mx-auto px-5 py-8 text-center text-sm text-[var(--text-secondary)]">
+            <p>© 2024 Arbab Nasrullah. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Firebase Logic -->
+    <script type="module">
+        import { db } from './firebase-config.js'; // This now works correctly
+        import { collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js";
+
+        const postsContainer = document.getElementById('posts-container');
+        const searchBar = document.getElementById('search-bar');
+        const noResultsMessage = document.getElementById('no-results-message');
+        let allPosts = []; // Store all posts here
+
+        async function fetchPosts() {
+            try {
+                const postsQuery = query(collection(db, "posts"), orderBy("timestamp", "desc"));
+                const querySnapshot = await getDocs(postsQuery);
+                
+                if (querySnapshot.empty) {
+                    postsContainer.innerHTML = `<p class="col-span-full text-center text-[var(--text-secondary)]">No posts found. Come back soon!</p>`;
+                    return;
+                }
+                
+                querySnapshot.forEach((doc) => {
+                    allPosts.push({ id: doc.id, ...doc.data() });
+                });
+                displayPosts(allPosts);
+            } catch (error) {
+                console.error("Error fetching posts: ", error);
+                postsContainer.innerHTML = `<p class="col-span-full text-center text-red-500">Error loading posts. Please try again later.</p>`;
+            }
+        }
+
+        function displayPosts(postsToDisplay) {
+            postsContainer.innerHTML = '';
+            noResultsMessage.classList.toggle('hidden', postsToDisplay.length > 0);
+
+            postsToDisplay.forEach((postData) => {
+                const post = postData;
+                const postElement = document.createElement('div');
+                postElement.className = 'glass-effect rounded-xl overflow-hidden group transform hover:-translate-y-2 transition-transform duration-300';
+                postElement.setAttribute('data-aos', 'fade-up');
+
+                const formattedDate = post.timestamp ? new Date(post.timestamp.seconds * 1000).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : 'Date not available';
+                // Correctly references imageUrl from your admin panel
+                const mainImage = post.imageUrl ? post.imageUrl : 'https://via.placeholder.com/400x250/1f2937/9ca3af.text=No+Image';
+
+                postElement.innerHTML = `
+                    <a href="blog-detail.html?id=${postData.id}" class="block">
+                        <img src="assets/blog/${mainImage}" alt="${post.title}" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <p class="text-sm text-[var(--text-secondary)] mb-2">${formattedDate}</p>
+                            <h3 class="text-xl font-bold mb-2 group-hover:brand-gradient-text transition-colors">${post.title}</h3>
+                            <p class="text-sm text-[var(--text-secondary)] h-10 overflow-hidden">${stripHtml(post.content).substring(0, 80)}...</p>
+                        </div>
+                    </a>
+                `;
+                postsContainer.appendChild(postElement);
+            });
+        }
+        
+        // Utility to remove HTML tags from content for the preview
+        function stripHtml(html){
+           let doc = new DOMParser().parseFromString(html, 'text/html');
+           return doc.body.textContent || "";
+        }
+        
+        // --- Standard Page Scripts ---
+        document.addEventListener('DOMContentLoaded', () => {
+            AOS.init({ duration: 800, once: true, offset: 50 });
+            fetchPosts();
+
+            const themeToggle = document.getElementById('theme-toggle');
+            const lightIcon = document.getElementById('theme-icon-light');
+            const darkIcon = document.getElementById('theme-icon-dark');
+            const applyTheme = (theme) => {
+                document.documentElement.className = theme;
+                if (theme === 'dark') { lightIcon.classList.add('hidden'); darkIcon.classList.remove('hidden'); }
+                else { lightIcon.classList.remove('hidden'); darkIcon.classList.add('hidden'); }
+            };
+            const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            applyTheme(savedTheme);
+            themeToggle.addEventListener('click', () => {
+                const newTheme = document.documentElement.className === 'dark' ? 'light' : 'dark';
+                localStorage.setItem('theme', newTheme);
+                applyTheme(newTheme);
+            });
+            
+            // --- SEARCH LOGIC ---
+            searchBar.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                const filteredPosts = allPosts.filter(post => 
+                    post.title.toLowerCase().includes(searchTerm) ||
+                    stripHtml(post.content).toLowerCase().includes(searchTerm)
+                );
+                displayPosts(filteredPosts);
+            });
+        });
+    </script>
+</body>
+</html>

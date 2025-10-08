@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <!-- 
+    ====================================================================
+    MAIN CORE PAGES (HIGHEST PRIORITY)
+    Your most important pages that define your site.
+    ====================================================================
+    -->
+    <url>
+        <loc>https://arbabnasru.infy.uk/home.html</loc>
+        <lastmod>2025-07-31</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://arbabnasru.infy.uk/about.html</loc>
+        <lastmod>2025-07-31</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://arbabnasru.infy.uk/contact.html</loc>
+        <lastmod>2025-07-31</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- 
+    ====================================================================
+    DYNAMIC CONTENT PAGES (HIGH PRIORITY)
+    These are hubs for content that changes often (Shop, Blog, Projects).
+    ====================================================================
+    -->
+    <url>
+        <loc>https://arbabnasru.infy.uk/shop.html</loc>
+        <lastmod>2025-07-31</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://arbabnasru.infy.uk/blog.html</loc>
+        <lastmod>2025-07-31</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://arbabnasru.infy.uk/project.html</loc>
+        <lastmod>2025-07-31</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- 
+    ====================================================================
+    FEATURE & DOWNLOAD PAGES (MEDIUM PRIORITY)
+    Important pages that are features of your site.
+    ====================================================================
+    -->
+    <url>
+        <loc>https://arbabnasru.infy.uk/apk.html</loc>
+        <lastmod>2025-07-31</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://arbabnasru.infy.uk/faq.html</loc>
+        <lastmod>2025-07-31</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- 
+    ====================================================================
+    LEGAL & STATIC PAGES (LOWEST PRIORITY)
+    These pages exist but don't need frequent crawling.
+    ====================================================================
+    -->
+    <url>
+        <loc>https://arbabnasru.infy.uk/terms.html</loc>
+        <lastmod>2025-07-31</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+    <url>
+        <loc>https://arbabnasru.infy.uk/disclaimer.html</loc>
+        <lastmod>2025-07-31</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+    
+    <!-- 
+    NOTE ON DYNAMIC PAGES: For individual product and blog pages, you would
+    ideally generate these links automatically. See the explanation below.
+    If you only have a few, you can add them manually like this:
+-->
+    <url>
+        <loc>https://arbabnasru.infy.uk/product-detail.html?id=yourFirstProductId</loc>
+        <lastmod>2025-07-31</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://arbabnasru.infy.uk/product-detail.html?id=yourSecondProductId</loc>
+        <lastmod>2025-07-31</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    -->
+
+</urlset>
